@@ -1,0 +1,108 @@
+nodes:
+  - _type: MainMenuGroup
+    id: -100
+    defaultOpen: false
+    iconbase64: data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTQuMjU2MTkgMTU5LjA4OTEyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwYTM4Mzt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48L2RlZnM+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTk0LjI1NjE5IiBoZWlnaHQ9IjE1OS4wODkxMiIgcng9IjIwLjU2MDY4Ii8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTgwLjQ0ODcsODEuNDY2NzNhNC45NzQxNyw0Ljk3NDE3LDAsMCwwLC4yNTI4Ny0uODE0NjNjLjAxNjM1LS4wNzIwOS4wMjk2LS4xNDQzNS4wNDI4NC0uMjE3NTlhNC45ODk3Miw0Ljk4OTcyLDAsMCwwLDAtMS43OGMtLjAxMzI0LS4wNzMyNC0uMDI2NDktLjE0NTUxLS4wNDI4NC0uMjE3NTlhNC45NzQ1OCw0Ljk3NDU4LDAsMCwwLS4yNTI4Ny0uODE0NjRjLS4wMTU4Ny0uMDM4MTUtLjAzNzQ4LS4wNzI2OS0uMDU0MzItLjExMDM1YTQuOTkzMiw0Ljk5MzIsMCwwLDAtLjIzMDE3LS40Njc0MWwtMTkuNzY2Ni0zNC4yMzczYTQuOTY5NDksNC45Njk0OSwwLDAsMC0uMjg3NDEtLjQyOTI2Yy0uMDI1MjctLjAzNDkxLS4wNDUzNS0uMDcyNTEtLjA3MTU0LS4xMDY4MWE0Ljk3ODgxLDQuOTc4ODEsMCwwLDAtLjU3NjExLS42MjMwNWMtLjA1NTg0LS4wNTE3Ni0uMTEzNDYtLjEwMDg5LS4xNzIwNi0uMTUwMzNhNS4wMDc2Myw1LjAwNzYzLDAsMCwwLS43MTk5MS0uNTE4NDNsLS4wMDMwNS0uMDAyMi0uMDAyNzQtLjAwMTIyYTUuMDAyMzQsNS4wMDIzNCwwLDAsMC0uODA5NDUtLjM2NDY5Yy0uMDcyNjktLjAyNjI0LS4xNDQ1OS0uMDUxNzUtLjIxNzktLjA3NDRhNC45NzkzNyw0Ljk3OTM3LDAsMCwwLS44MjQ4My0uMTg2ODNjLS4wNDY5My0uMDA2MS0uMDkzNS0uMDA0NTctLjE0MDQ0LS4wMDkyN2E0Ljk4MDA2LDQuOTgwMDYsMCwwLDAtLjUwNDY0LS4wMzM1MUgxMTYuNTMzMzVhNC45Njg0Miw0Ljk2ODQyLDAsMCwwLS41MDQuMDMzNDVjLS4wNDc2LjAwNDgyLS4wOTQ3OC4wMDMyOS0uMTQyMzMuMDA5NDZhNC45NzU2Niw0Ljk3NTY2LDAsMCwwLS44MjIyNi4xODYyN2MtLjA3NDQ3LjAyMy0uMTQ3NTMuMDQ5LS4yMjEzOC4wNzU2M2E1LjAwMDU4LDUuMDAwNTgsMCwwLDAtLjgwNzE5LjM2MzgzbC0uMDAyODEuMDAxMjgtLjAwMzA1LjAwMjJhNS4wMDg3NCw1LjAwODc0LDAsMCwwLS43MTk5MS41MTg0M2MtLjA1ODU5LjA0OTQ0LS4xMTYxNS4wOTg0NS0uMTcyLjE1MDI3YTQuOTc1MzYsNC45NzUzNiwwLDAsMC0uNTc2MzUuNjIzMzVjLS4wMjYuMDM0LS4wNDU4NC4wNzEyMy0uMDcwODYuMTA1ODRhNC45ODQwOSw0Ljk4NDA5LDAsMCwwLS4yODc5LjQzTDkzLjg4MDQ2LDc0LjU0NDQ5SDc5LjI3OGwxMy45OTMxNy0yNC4yMzczaDYuNDk1NmE1LDUsMCwwLDAsMC0xMEg5MC4zODQ0M2E1LjAwMDMsNS4wMDAzLDAsMCwwLTQuMzMwMDgsMi41TDY3LjczMTExLDc0LjU0NDQ5aC0xNC42MDJsMTMuOTkzMTYtMjQuMjM3M2g2LjQ5NTYxYTUsNSwwLDAsMCwwLTEwSDY0LjIzNTVhNS4wMDAzMSw1LjAwMDMxLDAsMCwwLTQuMzMwMDgsMi41TDQxLjU4MjE4LDc0LjU0NDQ5SDI2Ljk3OTdsMTMuOTkzNTktMjQuMjM3M0g0Ny40Njg5YTUsNSwwLDAsMCwwLTEwSDM4LjA4NjU4YTUuMDAwMjksNS4wMDAyOSwwLDAsMC00LjMzMDA4LDIuNUwxMy45ODk0MSw3Ny4wNDQ0OWE0Ljk4MjA2LDQuOTgyMDYsMCwwLDAtLjIyOTI1LjQ2NTk0Yy0uMDE3MTUuMDM4NC0uMDM5MTIuMDczNDktLjA1NTM2LjExMjQzYTQuOTc0LDQuOTc0LDAsMCwwLS4yNTE4My44MTEyOGMtLjAxNjkxLjA3NDIyLS4wMzA1OC4xNDg1LS4wNDQxMy4yMjM4OGE0Ljk5ODE3LDQuOTk4MTcsMCwwLDAtLjA4OS44ODMwNWwtLjAwMDM2LjAwMzQyLjAwMDM2LjAwMzQyYTQuOTk4MjgsNC45OTgyOCwwLDAsMCwuMDg5Ljg4MzA2Yy4wMTM1NS4wNzUzOC4wMjcyMi4xNDk2Ni4wNDQxMy4yMjM4N2E0Ljk3MzcxLDQuOTczNzEsMCwwLDAsLjI1MTgzLjgxMTI4Yy4wMTYyNC4wMzg5NC4wMzgyMS4wNzQuMDU1MzYuMTEyNDNhNC45ODA4NCw0Ljk4MDg0LDAsMCwwLC4yMjkyNS40NjU5NEwzMy43NTY1LDExNi4yODEzMWE1LjAwMDMxLDUuMDAwMzEsMCwwLDAsNC4zMzAwOCwyLjVINDcuNDY4OWE1LDUsMCwxLDAsMC0xMEg0MC45NzMyOUwyNi45Nzk3Niw4NC41NDQ0OUg0MS41ODIxOGwxOC4zMjMyNCwzMS43MzY4MmE1LjAwMDMzLDUuMDAwMzMsMCwwLDAsNC4zMzAwOCwyLjVoOS4zODIzM2E1LDUsMCwwLDAsMC0xMEg2Ny4xMjIyMkw1My4xMjkxMiw4NC41NDQ0OWgxNC42MDJsMTguMzIzMjQsMzEuNzM2ODJhNS4wMDAzMiw1LjAwMDMyLDAsMCwwLDQuMzMwMDgsMi41aDkuMzgyMzJhNSw1LDAsMCwwLDAtMTBoLTYuNDk1Nkw3OS4yNzgsODQuNTQ0NDlIOTMuODgwNTJsMTguMzIyNzYsMzEuNzM2ODJhNC45NzE5Myw0Ljk3MTkzLDAsMCwwLC4yODc1OS40Mjk0NGMuMDI1MjEuMDM0NzkuMDQ1MTcuMDcyMzMuMDcxMzUuMTA2NTdhNC45ODAzOSw0Ljk4MDM5LDAsMCwwLC41NzYwNS42MjMxMWMuMDU1OTEuMDUxODguMTEzNzEuMTAwOTUuMTcyMzcuMTUwNTFhNS4wMDEzOCw1LjAwMTM4LDAsMCwwLC43MTk2Ni41MTgyNWwuMDAzMDUuMDAyMmMuMDIwNjMuMDExOS4wNDI1NC4wMTk1My4wNjMzLjAzMTEyYTQuOTk1OTMsNC45OTU5MywwLDAsMCwuNTIzODYuMjU3ODhjLjE1MjIyLjA2MzI5LjMwNzU2LjExMDg0LjQ2MjgzLjE1ODA4LjA1MS4wMTU1LjA5OTYxLjAzNy4xNTExOS4wNTA5YTQuOTY3MjUsNC45NjcyNSwwLDAsMCwxLjI5Mzk0LjE3MjkybC4wMTUwOC0uMDAxaDM5LjUxMzc5bC4wMTUwOC4wMDFhNC45NjcyNSw0Ljk2NzI1LDAsMCwwLDEuMjkzOTQtLjE3MjkyYy4wNTE1OC0uMDEzOTEuMTAwMTYtLjAzNTQuMTUxMTktLjA1MDkuMTU1MjctLjA0NzI0LjMxMDYtLjA5NDc5LjQ2MjgyLS4xNTgwOGE0Ljk5NTExLDQuOTk1MTEsMCwwLDAsLjUyMzg3LS4yNTc4OGMuMDIwNzUtLjAxMTU5LjA0MjY2LS4wMTkyMi4wNjMyOS0uMDMxMTJsLjAwMzEyLS4wMDIyYTUuMDA3MTMsNS4wMDcxMywwLDAsMCwuNzE4NTYtLjUxNzMzYy4wNTkzOS0uMDUwMTEuMTE3NzQtLjA5OTg2LjE3NDMyLS4xNTIyOWE0Ljk3ODYyLDQuOTc4NjIsMCwwLDAsLjU3NDU4LS42MjE0Yy4wMjctLjAzNTQ2LjA0NzczLS4wNzQxNS4wNzM4LS4xMTAyM2E0Ljk4MzI3LDQuOTgzMjcsMCwwLDAsLjI4NTctLjQyNjYzbDE5Ljc2NjYtMzQuMjM2ODJhNC45OTE4Miw0Ljk5MTgyLDAsMCwwLC4yMzAxNy0uNDY3NEMxODAuNDExMjIsODEuNTM5NDMsMTgwLjQzMjgzLDgxLjUwNDg4LDE4MC40NDg3LDgxLjQ2NjczWm0tMjQuMzgxMTEsMjIuMzE0NTJMMTUwLjI5NDEsOTMuNzgwOTRsNS4zMzI5NC05LjIzNjQ1aDExLjU0Njg4Wk0xMDUuNDI3NzYsODQuNTQ0NDloMTEuNTQ3MDZsNS4zMzI4OSw5LjIzNjMzLTUuNzc0MTcsMTAuMDAwNjFaTTExNi41MzM2LDU1LjMwN2w1Ljc3NDExLDEwLjAwMDMxLTUuMzMyOTUsOS4yMzcxOEgxMDUuNDI3N1ptMTQuNDM0MzIsMzMuNDczODItNS4zMzMtOS4yMzYzMyw1LjMzMy05LjIzNzNoMTAuNjY2bDUuMzMzLDkuMjM3My01LjMzMyw5LjIzNjMzWm0xMC42NjYtMjguNDczNjNIMTMwLjk2NzhsLTUuNzczOTItMTBoMjIuMjEzNVpNMTMwLjk2Nzg2LDk4Ljc4MDgyaDEwLjY2Nmw1Ljc3MzYyLDEwLjAwMDQ5SDEyNS4xOTM3NVpNMTU1LjYyNzEsNzQuNTQ0NDlsLTUuMzMzLTkuMjM3Myw1Ljc3MzQzLTEwTDE2Ny4xNzQsNzQuNTQ0NDlaIi8+PC9zdmc+
+    identifier: urn:stackpack:harvester:shared:main-menu-group:harvester
+    items:
+      - _type: MainMenuViewItem
+        viewIdentifier: urn:stackpack:harvester:shared:query-view:virtual-machine
+      - _type: MainMenuViewItem
+        viewIdentifier: urn:stackpack:harvester:shared:query-view:virtual-machine-launcher
+      - _type: MainMenuViewItem
+        viewIdentifier: urn:stackpack:harvester:shared:query-view:virtual-machine-controller
+      - _type: MainMenuViewItem
+        viewIdentifier: urn:stackpack:harvester:shared:query-view:host
+    name: SUSE Virtualization
+
+  - _type: QueryView
+    id: -110
+    autoGrouping: false
+    connectedComponents: true
+    description: Virtual Machines
+    flags:
+      - DisableEventHandlers
+      - HideFromViewsOverview
+    groupedByDomains: true
+    groupedByLayers: true
+    groupedByRelations: false
+    groupingEnabled: true
+    identifier: urn:stackpack:harvester:shared:query-view:virtual-machine
+    minimumGroupSize: 8
+    name: Virtual Machines
+    neighboringComponents: true
+    query: (type = "vm")
+    queryVersion: 0.0.1
+    showCause: NONE
+    showIndirectRelations: false
+    tags: [ ]
+    viewType: urn:stackpack:harvester:shared:view-type:virtual-machine
+
+  - _type: QueryView
+    id: -120
+    autoGrouping: true
+    connectedComponents: true
+    description: Pods launching Virtual Machines
+    flags:
+      - DisableEventHandlers
+      - HideFromViewsOverview
+    groupedByDomains: true
+    groupedByLayers: true
+    groupedByRelations: true
+    groupingEnabled: true
+    identifier: urn:stackpack:harvester:shared:query-view:virtual-machine-launcher
+    minimumGroupSize: 3
+    name: Launchers
+    neighboringComponents: true
+    query: ((label = "kubevirt.io:virt-launcher" AND type = "pod"))
+    queryVersion: 0.0.1
+    showCause: NONE
+    showIndirectRelations: false
+    tags: [ ]
+    viewType: urn:stackpack:harvester:shared:view-type:virtual-machine-launcher
+
+  - _type: QueryView
+    id: -130
+    autoGrouping: true
+    connectedComponents: true
+    description: Pods Controlling Launchers
+    flags:
+      - DisableEventHandlers
+      - HideFromViewsOverview
+    groupedByDomains: true
+    groupedByLayers: true
+    groupedByRelations: true
+    groupingEnabled: true
+    identifier: urn:stackpack:harvester:shared:query-view:virtual-machine-controller
+    minimumGroupSize: 3
+    name: Controllers
+    neighboringComponents: true
+    query: type in ("pod") and label = "kubevirt.io:virt-controller"
+    queryVersion: 0.0.1
+    showCause: NONE
+    showIndirectRelations: false
+    tags: [ ]
+    viewType: urn:stackpack:harvester:shared:view-type:virt-controller
+
+  - _type: QueryView
+    id: -140
+    autoGrouping: true
+    connectedComponents: true
+    description: Nodes representing SUSE Virtualization Hosts
+    flags:
+      - DisableEventHandlers
+      - HideFromViewsOverview
+    groupedByDomains: true
+    groupedByLayers: false
+    groupedByRelations: true
+    groupingEnabled: true
+    identifier: urn:stackpack:harvester:shared:query-view:host
+    minimumGroupSize: 8
+    name: Hosts
+    neighboringComponents: false
+    query: 'type = "node" AND label in ("harvesterhci.io/managed:true", "kubevirt.io/ksm-enabled:false", "kubevirt.io/ksm-enabled:true")'
+    queryVersion: 0.0.1
+    showCause: NONE
+    showIndirectRelations: false
+    tags: [ ]
+    viewType: urn:stackpack:harvester:shared:view-type:host

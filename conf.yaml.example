@@ -1,0 +1,13 @@
+suseobservability:
+  api_url: https://xxxx.io
+  api_key: 181335xxxx
+  api_token: tRa6dxxxx
+
+kubernetes:
+  cluster: retail-store
+  in_cluster: false
+  kubeconfig: ./kubeconfig
+
+instance:
+  type: virt
+  url: retail-store

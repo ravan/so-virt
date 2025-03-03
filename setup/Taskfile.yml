@@ -1,0 +1,101 @@
+version: '3'
+
+dotenv: [ '../.env' ]
+
+includes:
+  stackpack:
+    taskfile: ./stackpack
+    dir: ./stackpack
+  dev:
+    taskfile: ./common
+
+vars:
+  LOCAL_INSTANCE: '{{.CLUSTER_NAME}}'
+  KUBECONFIG_FILE: '{{.KUBECONFIG_FILE_PATH}}/{{.KUBECONFIG_FILE_NAME}}'
+  KUBECONFIG: '--kubeconfig {{.KUBECONFIG_FILE}}'
+
+  IMAGE_REPO: "{{.USER}}/so-virt"
+  VERSION: 0.0.1
+
+tasks:
+
+  # -- SUSE Observability Tasks -- #
+  so-create-virt-autosync-stackpack-instance:
+    silent: true
+    cmds:
+      - task: dev:create-autosync-stackpack-instance
+        vars:
+          TYPE: "virt"
+          NAME: "{{.CLUSTER_NAME}}"
+
+  so-create-k8s-stackpack-instance:
+    - task: dev:create-k8s-stackpack-instance
+      vars:
+        CLUSTER_NAME: "{{.CLUSTER_NAME}}"
+
+  so-install-virt-stackpack-elements:
+    silent: true
+    cmds:
+      - task: stackpack:install
+
+  # -- Native Cluster Tasks -- #
+  native-deploy-all:
+    silent: true
+    cmds:
+      - task: native-deploy-so-virt
+      - task: native-deploy-observability-agent
+      - task: native-deploy-kubevirt-otel-collector
+
+  native-deploy-observability-agent:
+    - task: dev:deploy-observability-agent
+
+  native-undeploy-undeploy-otel-collector:
+    cmds:
+      - helm uninstall {{.KUBECONFIG}} --namespace monitoring suse
+
+  native-deploy-otel-collector:
+    silent: true
+    cmds:
+      - |-
+        kubectl apply {{.KUBECONFIG}} -n harvester-system -f ./common/config/suse-otel-rbac.yaml
+        cat <<EOF | helm upgrade --install --create-namespace {{.KUBECONFIG}} --namespace monitoring -f - suse {{.HELM_REPO}}/suse-observability-otel-collector 
+        apiKey: {{.SO_API_KEY}}
+        otlpHost: {{.SO_OTLP}}
+        clusterName: {{.CLUSTER_NAME}}
+        opentelemetry-collector:
+          config:
+            receivers:
+              prometheus:
+                config:
+                  scrape_configs:
+                  - job_name: 'kubevirt-metrics'
+                    tls_config:
+                      insecure_skip_verify: true
+                    scrape_interval: 30s
+                    scheme: https
+                    kubernetes_sd_configs:
+                      - role: endpoints
+                        namespaces:
+                          names:
+                            - harvester-system
+                        selectors:
+                          - role: endpoints
+                            field: "metadata.name=kubevirt-prometheus-metrics"
+        EOF
+
+  native-deploy-so-virt:
+    silent: true
+    cmds:
+      - |-
+        cat <<EOF |  helm upgrade --install --create-namespace {{.KUBECONFIG}} --namespace so-extensions virtualization -f - ../deploy/helm/so-virt
+        apiToken: {{.SO_TOKEN}}
+        apiKey: {{.SO_API_KEY}}
+        serverUrl: {{.SO_URL}}
+        clusterName: {{.CLUSTER_NAME}}
+        EOF
+
+  native-trigger-so-virt-job:
+    silent: true
+    cmds:
+      - echo ""
+      - kubectl create job --from=cronjob/virtualization-so-virt "sync-so-virt-$(date +%s)" -n so-extensions {{.KUBECONFIG}}

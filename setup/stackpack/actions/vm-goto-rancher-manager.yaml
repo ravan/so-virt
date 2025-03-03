@@ -1,0 +1,34 @@
+nodes:
+- _type: ComponentActionDefinition
+  bindQuery: type = "vm"
+  description: Go to the SUSE Virtualization VM in Rancher Manager
+  identifier: urn:stackpack:harvester:component-action-definition:vm-goto-rancher
+  id: -1
+  name: Manage Virtual Machine
+  script: |-
+    def rancherManager = 'https://vaquero.5glinux.com'
+    def knownClusterIds = ['retail-store': 'c-m-2bz6x7qg', 'far-edge': 'c-m-28864rls']
+
+    def clusterLabel = component.labels.find({it.name.startsWith('cluster-name:')})
+
+    if (clusterLabel) {
+        def clusterName = clusterLabel.name.split(':')[1]
+        if (knownClusterIds.containsKey(clusterName)) {
+            def clusterId = knownClusterIds[clusterName]
+            def vmName = component.name
+            if (vmName) {
+                def targetUrl = "${rancherManager}/dashboard/harvester/c/${clusterId}/kubevirt.io.virtualmachine/default/${vmName}#basics"
+                //println("Redirecting to ${targetUrl}")
+                UI.redirectToURL(targetUrl)
+            } else {
+                //println('No vm label found')
+                UI.showReport("No 'harvesterhci.io/vmName' label found")
+            }
+        } else {
+            //println("no cluster id found")
+            UI.showReport("No cluster id registered for ${clusterName}. Ask admin to adjust action.")
+        }
+    } else {
+        //println("not found")
+        UI.showReport("No 'cluster-name' label found")
+    }

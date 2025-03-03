@@ -1,0 +1,18 @@
+nodes:
+  - _type: Monitor
+    arguments:
+      failureState: CRITICAL
+      loggingLevel: WARN
+      maxReadyDelay: 15m
+    description: Checks if a Virtual Machine that has been scheduled is running and ready to receive traffic.
+    function: {{ get "urn:stackpack:harvester:shared:monitor-function:vm-ready-state"  }}
+    id: -100
+    identifier: urn:stackpack:harvester:shared:monitor:harvester:pod-ready-state
+    intervalSeconds: 30
+    name: Virtual Machine Ready State
+    remediationHint: |
+      \{{message\}}
+
+    status: ENABLED
+    tags:
+      - vm

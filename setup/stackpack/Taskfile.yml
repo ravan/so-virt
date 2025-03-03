@@ -1,0 +1,168 @@
+version: '3'
+
+tasks:
+
+  uninstall:
+    silent: true
+    cmds:
+      - task: delete-settings
+        vars:
+          TYPE: MainMenuGroup
+          NAME: SUSE Virtualization
+      - for: [ 'Hosts', 'Virtual Machines', 'Controllers', 'Launchers' ]
+        task: delete-settings
+        vars:
+          TYPE: QueryView
+          NAME: '{{.ITEM}}'
+      - for:
+          - 'Virtual Machine view definition'
+          - 'Virtualization hosts view definition'
+          - 'VirtLauncher view definition'
+          - 'VirtLauncher view definition'
+        task: delete-settings
+        vars:
+          TYPE: ViewType
+          NAME: '{{.ITEM}}'
+      - for:
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-add-rate
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-depth
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-duration
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-work-duration
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-unfinished-work
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-retry-rate
+          - urn:stackpack:harvester:shared:metric-binding:work-queue-longest-running-processor
+          - urn:stackpack:harvester:shared:metric-binding:vmi-creation-time
+          - urn:stackpack:harvester:shared:metric-binding:vmi-start-rate
+          - urn:stackpack:harvester:shared:metric-binding:vmi-phase-transition-latency
+          - urn:stackpack:harvester:shared:metric-binding:vmi-count-approx
+          - urn:stackpack:harvester:shared:metric-binding:vm-cpu-usage
+          - urn:stackpack:harvester:shared:metric-binding:vm-memory-usage
+          - urn:stackpack:harvester:shared:metric-binding:vm-storage-read-traffic-bytes
+          - urn:stackpack:harvester:shared:metric-binding:vm-storage-write-traffic-bytes
+          - urn:stackpack:harvester:shared:metric-binding:vm-network-receive-bits
+          - urn:stackpack:harvester:shared:metric-binding:vm-network-transmit-bits
+          - urn:stackpack:harvester:shared:metric-binding:vm-network-receive-packets-2h
+          - urn:stackpack:harvester:shared:metric-binding:vm-network-transmit-packets-2h
+          - urn:stackpack:harvester:shared:metric-binding:vm-io-time
+          - urn:stackpack:harvester:shared:metric-binding:vm-iops
+        task: delete-settings
+        vars:
+          TYPE: MetricBinding
+          ATTR: 'identifier'
+          NAME: '{{.ITEM}}'
+      - for:
+          - urn:stackpack:harvester:component-action-definition:virt-launcher-goto-rancher
+          - urn:stackpack:harvester:component-action-definition:vm-goto-rancher
+          - urn:stackpack:harvester:component-action-definition:host-show-all-vms
+        task: delete-settings
+        vars:
+          TYPE: ComponentActionDefinition
+          ATTR: 'identifier'
+          NAME: '{{.ITEM}}'
+
+  install:
+    cmds:
+      - task: upload-monitor-functions
+      - task: upload-metric-bindings
+      - task: upload-highlights
+      - task: upload-overviews
+      - task: upload-menu
+      - task: upload-monitors
+      - task: upload-actions
+
+  upload-menu:
+    silent: true
+    cmds:
+      - "{{.CLI}} settings apply -f ./menu/harvester.yaml"
+
+  upload-highlights:
+    silent: true
+    cmds:
+      - "{{.CLI}} settings apply -f ./highlights/vm.yaml"
+
+  upload-overviews:
+    silent: true
+    cmds:
+      - "{{.CLI}} settings apply -f ./overview/virt-launcher.yaml"
+      - "{{.CLI}} settings apply -f ./overview/virt-controller.yaml"
+      - "{{.CLI}} settings apply -f ./overview/host.yaml"
+      - "{{.CLI}} settings apply -f ./overview/vm.yaml"
+
+  upload-metric-bindings:
+    silent: true
+    cmds:
+      - echo "Uploading metric bindings"
+      - "{{.CLI}} settings apply -f ./metrics/virt-controller.yaml"
+      - "{{.CLI}} settings apply -f ./metrics/vm.yaml"
+
+  upload-monitor-functions:
+    silent: true
+    cmds:
+      - echo "Uploading monitor functions"
+      - "{{.CLI}} settings apply -f ./monitor/function/vm-readiness.yaml"
+
+  upload-monitors:
+    silent: true
+    cmds:
+      - echo "Uploading monitors"
+      - "{{.CLI}} settings apply -f ./monitor/vm-ready-state.yaml"
+
+  upload-actions:
+    silent: true
+    cmds:
+      - echo "Uploading actions"
+      - "{{.CLI}} settings apply -f ./actions/virt-launcher-goto-rancher-manager.yaml"
+      - "{{.CLI}} settings apply -f ./actions/vm-goto-rancher-manager.yaml"
+      - "{{.CLI}} settings apply -f ./actions/host-showall-vms.yaml"
+
+
+  # -- Utility Tasks -- #
+
+  delete-settings:
+    internal: true
+    vars:
+      ATTR: '{{default "name" .ATTR}}'
+    requires:
+      vars: [ TYPE, NAME ]
+    cmds:
+      - |-
+        echo "Looking up id for {{.NAME}}"
+        {{.CLI}} settings list --type {{.TYPE}} -o json | jq -r '.settings.[] | select(.{{.ATTR}} == "{{.NAME}}") | .id' | xargs -I {} {{.CLI}} settings delete --ids {}
+
+
+#  generate-metric-bindings:
+#    silent: true
+#    internal: true
+#    cmds:
+#      - echo "Generate shared pods bindings"
+#      - task: render
+#        vars:
+#          CTX: |-
+#            {
+#            "Prefix": "shared-pod",
+#            "Filter": "gen_ai_system=\"${name}\"",
+#            "Scope": "type in (\"genai.system.ollama\", \"genai.system.openai\")"
+#            }
+#          TEMPLATE: ./metrics/tpl/shared_pod.tmpl.yaml
+#          OUTPUT: ./metrics/shared_pod.yaml
+
+  convert-svg-to-datauri:
+    silent: true
+    desc: "Convert svg to base64 data uri. Please supply svg file by executing 'convert-svg-todatauri -- <file>'"
+    requires:
+      var: [SVG]
+    vars:
+      SVG: "{{.CLI_ARGS}}"
+    cmds:
+      - echo "data:image/svg+xml;base64,$(base64 -i {{.SVG}})" | pbcopy
+      - echo "Base64 Data URI copied to clipboard"
+
+  render:
+    silent: true
+    desc: "Renders a golang template"
+    internal: true
+    requires:
+      vars: [CTX, TEMPLATE, OUTPUT]
+    cmds:
+      - |
+          echo '{{.CTX}}' | gomplate -c .=stdin:///in.json -f {{.TEMPLATE}} -o {{.OUTPUT}}

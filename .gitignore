@@ -1,0 +1,7 @@
+/.env
+/.idea/
+/docker
+/conf.yaml
+/**/http_dump
+/*.iml
+/*kubeconfig

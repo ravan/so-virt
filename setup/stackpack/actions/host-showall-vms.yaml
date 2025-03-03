@@ -1,0 +1,18 @@
+nodes:
+- _type: ComponentActionDefinition
+  bindQuery: type = "node" AND label in ("harvesterhci.io/managed:true", "kubevirt.io/ksm-enabled:false", "kubevirt.io/ksm-enabled:true")
+  description: Show all virtual machines running on host
+  identifier: urn:stackpack:harvester:component-action-definition:host-show-all-vms
+  id: -1
+  name: Show all Virtual Machines
+  script: |-
+    def compId = "id = '${component.id}'" 
+    def identifier = java.net.URLEncoder.encode(component.identifiers[0], "UTF-8")
+    def query = "${compId} OR (withNeighborsOf(direction = 'up', components = (${compId}), levels = '1') AND type = 'vm')"
+    def rawUrl = UI.createUrl().explore().topologyQuery(query).url()
+    def host = rawUrl.split("#")[0]
+    def encodedQuery = java.net.URLEncoder.encode(query, "UTF-8")
+    def url = "${host}#/components/${identifier}/topology?query=${encodedQuery}&view=connectedComponents--0__neighboringComponents--0"
+    UI.redirectToURL(url)
+    
+

@@ -1,0 +1,375 @@
+_version: 1.0.85
+nodes:
+- _type: MonitorFunction
+  description: |-
+    Determines if a VM is in a ‘running’ state and is ready to receive traffic. If a scheduled VM does not become ready
+    within a specified time, this indicates an underlying application or infrastructure problem.
+  id: -100
+  identifier: urn:stackpack:harvester:shared:monitor-function:vm-ready-state
+  name: SUSE Virtualization VM readiness
+  parameters:
+  - _type: Parameter
+    extraAcceptedParameterTypes: []
+    id: -1
+    multiple: false
+    name: loggingLevel
+    required: false
+    type: STRING
+  - _type: Parameter
+    extraAcceptedParameterTypes:
+    - STRING
+    id: -2
+    multiple: false
+    name: maxReadyDelay
+    required: false
+    type: TIME_WINDOW
+  - _type: Parameter
+    extraAcceptedParameterTypes:
+    - STRING
+    id: -3
+    multiple: false
+    name: failureState
+    required: false
+    type: FAILING_HEALTH_STATE
+  script:
+    _type: ScriptFunctionBody
+    scriptBody: |
+      /**
+       * Start Logging.groovy code
+       */
+
+      INFO_CONST = "INFO"
+      WARN_CONST = "WARN"
+      ERROR_CONST = "ERROR"
+      DEBUG_CONST = "DEBUG"
+
+      String infoLog(String message) { printLogMessage(INFO_CONST, message) }
+      String warnLog(String message) { printLogMessage(WARN_CONST, message) }
+      String errorLog(String message) { printLogMessage(ERROR_CONST, message) }
+      String debugLog(String message) { printLogMessage(DEBUG_CONST, message) }
+
+      /**
+       * Set loggingLevel to true to enable debugging for this script
+       * Warning this does add extra load and potential disk space usage if the logging is being dumped
+       * Debugging can be used to determine runtime output within SUSE Observability
+       * Change the loggingLevel to increase or decrease the logging
+       *
+       * @param messagePrefix Will be displayed before the message in a bracket structure
+       * @param message The actual message that will be printed
+       */
+      String printLogMessage(String messagePrefix, String message) {
+          try {
+              // Test the debugging level defined to print the correct message per level hierarchy
+              switch(!binding.hasVariable('loggingLevel') || loggingLevel == null ? WARN_CONST : loggingLevel) {
+                  case DEBUG_CONST:
+                      println("[$messagePrefix] $message")
+                      break
+
+                  case INFO_CONST:
+                      if (messagePrefix == ERROR_CONST || messagePrefix == WARN_CONST || messagePrefix == INFO_CONST)
+                          println("[$messagePrefix] $message")
+                      break
+
+                  case WARN_CONST:
+                      if (messagePrefix == ERROR_CONST || messagePrefix == WARN_CONST)
+                          println("[$messagePrefix] $message")
+                      break
+
+                  case ERROR_CONST:
+                      if (messagePrefix == ERROR_CONST)
+                          println("[$messagePrefix] $message")
+                      break
+              }
+          }
+          catch (IllegalArgumentException value) {
+              throw new Exception("${value}, Available Log Levels: " + DEBUG_CONST + ", " + INFO_CONST + ", " + WARN_CONST + ", " + ERROR_CONST)
+          }
+
+          return message
+      }
+
+      /**
+       * End Logging.groovy code
+       */
+      /**
+       * Start Conversion.groovy code
+       */
+
+      Long determineSecondsFromTimeStringOrDuration(Object time) {
+          if (time instanceof String) {
+              return determineSecondsFromTimeString(time)
+          } else if (time instanceof java.time.Duration) {
+              return time.toMillis() / 1000 // Using toMillis instead of toSeconds because api changed between java 1.8 and 11
+          } else {
+              throw new Exception(errorLog("Supplied time is not of type String or Duration '$time'\n"))
+          }
+      }
+
+      /**
+       * Attempt to take a string in a specific format '<TIME INTEGER><DEFINE TIME TYPE LIKE MINUTES>' and parse the string.
+       * From this parsed string we attempt to determine how many second is in it for example 10m will be 600 seconds
+       *
+       * @param timeString Time as a string in the following format '<TIME INTEGER><DEFINE TIME TYPE LIKE MINUTES>'
+       * @return Integer - Total seconds determined from the string
+       */
+      Long determineSecondsFromTimeString(String timeString) {
+          debugLog("[SECONDS-FROM-STRING] Attempting to parse the time string '$timeString'")
+
+          String allowedTimeFormats =
+                  "The format for the time string needs to be as follow <TIME><TIME-TYPE>\n" +
+                          "<TIME> should be a integer value\n" +
+                          "<TIME-TYPE> should be one of the following:\n" +
+                          "- 's', 'sec', 'second' or 'seconds'\n" +
+                          "- 'm', 'min', 'minute' or 'minutes'\n" +
+                          "- 'h', 'hr', 'hour' or 'hours'\n" +
+                          "- 'd', 'day' or 'days'\n" +
+                          "- 'w', 'week' or 'weeks'"
+
+          try {
+              String lowercaseTime = timeString.toLowerCase()
+
+              String type = lowercaseTime.replaceAll("\\d+?(?:\\s+)?", "")
+              Integer value = lowercaseTime.replaceAll("(?:\\s+)?[a-zA-Z]+(?:\\s+)?", "").toInteger()
+
+              if (type == "s" || type == "sec" || type == "second" || type == "seconds") {
+                  return value
+              }
+              else if (type == "m" || type == "min" || type == "minute" || type == "minutes") {
+                  return 60 * value
+              }
+              else if (type == "h" || type == "hr" || type == "hour" || type == "hours") {
+                  return 60 * 60 * value
+              }
+              else if (type == "d" || type == "day" || type == "days") {
+                  return 60 * 60 * 24 * value
+              }
+              else if (type == "w" || type == "week" || type == "weeks") {
+                  return 60 * 60 * 24 * 7 * value
+              }
+              else {
+                  throw new Exception(errorLog("Unable to parse the time supplied '$timeString'\n$allowedTimeFormats"))
+              }
+          }
+          catch (ignored) {
+              throw new Exception(errorLog("Unable to parse the time supplied '$timeString'\n$allowedTimeFormats"))
+          }
+      }
+
+      String convertTimeSeriesIdToIdentifier(result) {
+          try {
+              // Determine a id from the result.timeSeries.id object, This will be unique if the data (excluding the data points) changes
+              return result.timeSeries.id.toIdentifierString()
+          }
+          catch(Exception ignored) {
+              // Alternative id generated mainly used in testing
+              // TODO: Try and use the original function if possible
+              return StringTemplate.alternativeIdentifierString(result.timeSeries.id)
+          }
+      }
+
+      /**
+       * End Conversion.groovy code
+       */
+
+      /**
+       * Start Validations.groovy code
+       */
+
+      HEALTH_UNKNOWN_CONST = "UNKNOWN"
+      HEALTH_CLEAR_CONST = "CLEAR"
+      HEALTH_DEVIATING_CONST = "DEVIATING"
+      HEALTH_CRITICAL_CONST = "CRITICAL"
+
+      /**
+       * Without group dictionary items we can not determine the URN and therefor no need to continue processing Health state for this result.
+       * Important Note: No need to THROW here as this actually occurs now and then on the results and 1 result like this does not mean all of them looks like this
+       */
+      Boolean timeSeriesGroupContainsValues(result) {
+          if (result.timeSeries.id.groups.size() <= 0) {
+              debugLog("One of the 'result.timeSeries.id.groups' results does not contain any group dictionary items which is required to generate a valid UUID.")
+              debugLog(result.toString())
+              debugLog("Skipping Processing of this Metric")
+              return false
+          }
+
+          return true
+      }
+
+
+      /**
+       * 'lowerValue' and 'higherValue' can not be the same number as it makes no logical sense
+       * 'lowerValue' can also not be more than 'higherValue' as deviate state needs to be first
+       * Either drop the optional 'lowerValue' or make the value lower than 'higherValue'
+       * Important Note: We want to THROW as this is a error and will effect all results
+       */
+      def valueShouldBeLowerThan(String lowerValueVariableName, Long lowerValue,
+                                 String higherValueVariableName, Long higherValue,
+                                 Boolean canBeEqual = false) {
+          if (canBeEqual && lowerValue != null && lowerValue >= higherValue ||
+                  !canBeEqual && lowerValue != null && (lowerValue >= higherValue || lowerValue == higherValue)) {
+              throw new Exception(errorLog(
+                      "The argument '$lowerValueVariableName' should either be lower than the '$higherValueVariableName' value or entirely removed. " +
+                              "'$lowerValueVariableName' can not be the same or higher than '$higherValueVariableName'\n" +
+                              "To fix do one of the following: \n" +
+                              " - Remove the '$lowerValueVariableName' Monitor argument if it is optional\n" +
+                              " - Update it's value to be lower than '$higherValueVariableName'\n" +
+                              " - Increase the '$higherValueVariableName' value") as String)
+          }
+      }
+
+
+      /**
+       * Make sure that certain pairs of variables are both defined as both can be optional but both needs to be defined if one is
+       */
+      def verifyVariablePairRequirements(ArrayList<ArrayList<ArrayList<String>>> pairs) {
+          for (pair in pairs) {
+              if (pair[0][1] == null && pair[1][1] != null || pair[0][1] != null && pair[1][1] == null) {
+                  throw new Exception(errorLog(
+                          "Both '${pair[0][0]}' and '${pair[1][0]}' needs to be defined.\n" +
+                                  "The one can not function without the other") as String)
+              }
+          }
+      }
+
+      /**
+       * Validate whether the given string is a valid unhealth health value, so either CRITICAL or DEVIATING.
+       */
+      String validateUnhealthyHealthValue(String healthValue) {
+          String upperCaseValue = healthValue.toUpperCase()
+
+          if (upperCaseValue == HEALTH_CRITICAL_CONST || upperCaseValue == HEALTH_DEVIATING_CONST) {
+              return upperCaseValue
+          } else {
+              throw new Exception(errorLog("Unable to parse the unhealthy health value ${healthValue}. Should be CRITICAL or DEVIATING."))
+          }
+      }
+
+      /**
+       * Determine if a urn template compiled correctly or has missing results
+       */
+      Boolean urnTemplateCompiled(String urnTemplate, String urnCompiled) {
+          if (urnCompiled.contains("\${")) {
+              return false
+          }
+
+          return true
+      }
+
+      /**
+       * End Validations.groovy code
+       */
+      /**
+       * Start Topology.groovy code
+       */
+
+      import java.net.URLEncoder
+
+      /**
+       * Health response wrapper for Telemetry based monitors
+       */
+      static def topologyHealthResponse(topology, String health, String message, String title = null, Map<String, Object> remediationHintTemplateData = [:]) {
+          // Retrieve the first identifier from the component, all of these components will merge anyways so taking the first
+          // one will always apply to the expected component
+          String urn = topology.identifiers.toSorted().head()
+
+          // Add defaults to remediationHintTemplateData
+          remediationHintTemplateData["componentUrnForUrl"] = URLEncoder.encode(urn, "UTF-8")
+
+          return [
+                  _type: "MonitorHealthState",
+                  id: urn,
+                  state: health,
+                  topologyIdentifier: urn,
+                  message: title,
+                  reason: message,
+                  remediationHintTemplateData: remediationHintTemplateData
+          ]
+      }
+
+      /**
+       * End Topology.groovy code
+       */
+      import java.time.Instant
+      import groovy.json.StringEscapeUtils
+
+      /**
+       **
+       ** MONITOR FUNCTION CODE - Ready state of a Pod.
+       **
+       **
+       ** INPUT PARAMETERS:
+       **
+       ** @loggingLevel <OPTIONAL>
+       **               DEFAULT: WARN
+       **               TYPE: STRING
+       **               EXAMPLE: INFO, WARN, ERROR or DEBUG
+       **               DESCRIPTION: Outputs logs for this monitor depending on the Log Level.
+       **                            Can assist in debugging your Monitor while running it on a SUSE Observability instance
+       **/
+      debugLog("[MONITOR ARGUMENT]: Key('loggingLevel') Value('${binding.hasVariable('loggingLevel') && loggingLevel != null ? loggingLevel : 'WARN'}')")
+
+      /** @failureState <REQUIRED>
+       **               DEFAULT: None
+       **               TYPE: STATE_VALUE
+       **               EXAMPLE:
+       **               DESCRIPTION: State to produce when the monitor fails
+       **/
+      debugLog("[MONITOR ARGUMENT]: Key('failureState') Value('$failureState')")
+
+      /** @maxReadyDelay <REQUIRED>
+       **               DEFAULT: None
+       **               TYPE: STRING
+       **               EXAMPLE:
+       **               DESCRIPTION: The threshold that is used to determine the time window within a pod is expected to become ready.
+       **/
+      debugLog("[MONITOR ARGUMENT]: Key('maxReadyDelay') Value('$maxReadyDelay')")
+
+      String parsedFailureState = validateUnhealthyHealthValue(failureState)
+      debugLog("[validateUnhealthyHealthValue] Validated the arg 'failureState' value '$failureState' to '$parsedFailureState'")
+
+      Long maxReadyDelaySec = determineSecondsFromTimeStringOrDuration(maxReadyDelay)
+      debugLog("[SECONDS-FROM-STRING] Validated the arg 'maxReadyDelay' value '$maxReadyDelay' to '$maxReadyDelaySec'")
+
+      TopologyStream
+        .query('type = "vm"')
+        .withSynchronizationData()
+        .then { vmComponent ->
+          String readyState = HEALTH_UNKNOWN_CONST
+          String message = ""
+          Map<String, Object> reasonMappings = [
+              reasons: [] as LinkedHashMap<String, Object>
+          ]
+          
+
+          switch(vmComponent?.properties?.vmPhase) {
+              case "Running":
+                      readyState = HEALTH_CLEAR_CONST
+                      message = "The pod has been bound to a node and the VirtualMachineInstance is started."
+                      break
+              case "Success":
+                      readyState = HEALTH_CLEAR_CONST
+                      message = "The VirtualMachineInstance stopped voluntarily, e.g. reacted to SIGTERM or shutdown was invoked from inside the VirtualMachineInstance."
+                      break
+              case "Pending":
+                      readyState = HEALTH_DEVIATING_CONST
+                      message = "The VirtualMachineInstance has been accepted by the system."
+                      break
+              case "Scheduling":
+                      readyState = HEALTH_DEVIATING_CONST
+                      message = "A target Pod exists but is not yet scheduled and in running state."
+                      break
+              case "Scheduled":
+                      readyState = HEALTH_DEVIATING_CONST
+                      message = "A target pod was scheduled and the system saw that Pod in runnig state. Here is where the responsibility of virt-controller ends and virt-handler takes over."
+                      break
+              case "Failed":
+                      readyState = HEALTH_CRITICAL_CONST
+                      message = "Failed means that the vmi crashed, disappeared unexpectedly or got deleted from the cluster before it was ever started."
+                      break    
+              default:
+                  break
+          }
+          
+          reasonMappings.message = message
+          return topologyHealthResponse(vmComponent, readyState, message, "VM Ready State", reasonMappings)
+        }
