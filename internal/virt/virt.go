@@ -26,7 +26,7 @@ func New(conf *config.Configuration) (*Virt, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	intercept(c)
 	client, err := kubevirtclient.GetKubevirtClientFromRESTConfig(c)
 	if err != nil {
 		log.Fatalf("cannot obtain KubeVirt client: %v\n", err)

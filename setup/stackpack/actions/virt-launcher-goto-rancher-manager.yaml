@@ -7,7 +7,7 @@ nodes:
   name: Manage Virtual Machine
   script: |-
     def rancherManager = 'https://vaquero.5glinux.com'
-    def knownClusterIds = ['retail-store': 'c-m-2bz6x7qg', 'far-edge': 'c-m-28864rls']
+    def knownClusterIds = ['retail-store': 'c-m-2bz6x7qg', 'far-edge': 'c-m-dfqn6v9z']
 
     def clusterLabel = component.labels.find({it.name.startsWith('cluster-name:')})
 

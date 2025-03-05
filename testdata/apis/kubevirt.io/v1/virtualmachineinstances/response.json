@@ -1,0 +1,2142 @@
+{
+  "apiVersion": "kubevirt.io/v1",
+  "items": [
+    {
+      "apiVersion": "kubevirt.io/v1",
+      "kind": "VirtualMachineInstance",
+      "metadata": {
+        "annotations": {
+          "harvesterhci.io/sshNames": "[\"default/someone\"]",
+          "kubevirt.io/latest-observed-api-version": "v1",
+          "kubevirt.io/nonroot": "true",
+          "kubevirt.io/storage-observed-api-version": "v1",
+          "kubevirt.io/vm-generation": "2"
+        },
+        "creationTimestamp": "2025-02-28T14:24:23Z",
+        "finalizers": [
+          "kubevirt.io/virtualMachineControllerFinalize",
+          "foregroundDeleteVirtualMachine",
+          "wrangler.cattle.io/harvester-lb-vmi-controller"
+        ],
+        "generation": 26,
+        "labels": {
+          "harvesterhci.io/vmName": "liberated",
+          "kubevirt.io/migrationTargetNodeName": "gr6-3",
+          "kubevirt.io/nodeName": "gr6-3"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  "v:\"wrangler.cattle.io/harvester-lb-vmi-controller\"": {}
+                }
+              }
+            },
+            "manager": "harvester-load-balancer",
+            "operation": "Update",
+            "time": "2025-02-28T14:24:23Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:harvesterhci.io/sshNames": {},
+                  "f:kubevirt.io/latest-observed-api-version": {},
+                  "f:kubevirt.io/nonroot": {},
+                  "f:kubevirt.io/storage-observed-api-version": {},
+                  "f:kubevirt.io/vm-generation": {}
+                },
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"kubevirt.io/virtualMachineControllerFinalize\"": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:harvesterhci.io/vmName": {},
+                  "f:kubevirt.io/migrationTargetNodeName": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"472f5e56-a75d-496f-965c-e715dd9cc318\"}": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:affinity": {
+                  ".": {},
+                  "f:nodeAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {
+                      ".": {},
+                      "f:nodeSelectorTerms": {}
+                    }
+                  }
+                },
+                "f:architecture": {},
+                "f:domain": {
+                  ".": {},
+                  "f:cpu": {
+                    ".": {},
+                    "f:cores": {},
+                    "f:maxSockets": {},
+                    "f:sockets": {},
+                    "f:threads": {}
+                  },
+                  "f:devices": {
+                    ".": {},
+                    "f:disks": {},
+                    "f:inputs": {},
+                    "f:interfaces": {}
+                  },
+                  "f:features": {
+                    ".": {},
+                    "f:acpi": {
+                      ".": {},
+                      "f:enabled": {}
+                    }
+                  },
+                  "f:firmware": {
+                    ".": {},
+                    "f:uuid": {}
+                  },
+                  "f:machine": {
+                    ".": {},
+                    "f:type": {}
+                  },
+                  "f:memory": {
+                    ".": {},
+                    "f:guest": {},
+                    "f:maxGuest": {}
+                  },
+                  "f:resources": {
+                    ".": {},
+                    "f:limits": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    },
+                    "f:requests": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    }
+                  }
+                },
+                "f:evictionStrategy": {},
+                "f:hostname": {},
+                "f:networks": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {}
+              },
+              "f:status": {
+                ".": {},
+                "f:activePods": {
+                  ".": {},
+                  "f:76af4a9e-1cc6-448d-8e15-3067e911ccef": {},
+                  "f:9fc37adf-6f15-4b8d-9041-e6f85986da01": {}
+                },
+                "f:conditions": {},
+                "f:currentCPUTopology": {
+                  ".": {},
+                  "f:cores": {},
+                  "f:sockets": {},
+                  "f:threads": {}
+                },
+                "f:guestOSInfo": {},
+                "f:launcherContainerImageVersion": {},
+                "f:migrationState": {
+                  ".": {},
+                  "f:migrationConfiguration": {
+                    ".": {},
+                    "f:allowAutoConverge": {},
+                    "f:allowPostCopy": {},
+                    "f:bandwidthPerMigration": {},
+                    "f:completionTimeoutPerGiB": {},
+                    "f:nodeDrainTaintKey": {},
+                    "f:parallelMigrationsPerCluster": {},
+                    "f:parallelOutboundMigrationsPerNode": {},
+                    "f:progressTimeout": {},
+                    "f:unsafeMigrationOverride": {}
+                  },
+                  "f:migrationUid": {},
+                  "f:sourceNode": {},
+                  "f:sourcePod": {},
+                  "f:targetNode": {},
+                  "f:targetPod": {}
+                },
+                "f:migrationTransport": {},
+                "f:qosClass": {},
+                "f:runtimeUser": {},
+                "f:virtualMachineRevisionName": {}
+              }
+            },
+            "manager": "virt-controller",
+            "operation": "Update",
+            "time": "2025-02-28T14:26:56Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  "f:kubevirt.io/nodeName": {}
+                }
+              },
+              "f:status": {
+                "f:guestOSInfo": {
+                  "f:id": {},
+                  "f:kernelRelease": {},
+                  "f:kernelVersion": {},
+                  "f:machine": {},
+                  "f:name": {},
+                  "f:prettyName": {},
+                  "f:version": {},
+                  "f:versionId": {}
+                },
+                "f:interfaces": {},
+                "f:machine": {
+                  ".": {},
+                  "f:type": {}
+                },
+                "f:migrationMethod": {},
+                "f:migrationState": {
+                  "f:completed": {},
+                  "f:endTimestamp": {},
+                  "f:mode": {},
+                  "f:startTimestamp": {},
+                  "f:targetDirectMigrationNodePorts": {
+                    ".": {},
+                    "f:33481": {},
+                    "f:33739": {},
+                    "f:37391": {}
+                  },
+                  "f:targetNodeAddress": {},
+                  "f:targetNodeDomainDetected": {},
+                  "f:targetNodeDomainReadyTimestamp": {}
+                },
+                "f:nodeName": {},
+                "f:phase": {},
+                "f:phaseTransitionTimestamps": {},
+                "f:selinuxContext": {},
+                "f:volumeStatus": {}
+              }
+            },
+            "manager": "virt-handler",
+            "operation": "Update",
+            "time": "2025-02-28T14:26:56Z"
+          }
+        ],
+        "name": "liberated",
+        "namespace": "default",
+        "ownerReferences": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "VirtualMachine",
+            "name": "liberated",
+            "uid": "472f5e56-a75d-496f-965c-e715dd9cc318"
+          }
+        ],
+        "resourceVersion": "442159495",
+        "uid": "ae7139a1-ee1a-46d7-b6e1-337d65f4977d"
+      },
+      "spec": {
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchExpressions": [
+                    {
+                      "key": "network.harvesterhci.io/mgmt",
+                      "operator": "In",
+                      "values": [
+                        "true"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "architecture": "amd64",
+        "domain": {
+          "cpu": {
+            "cores": 1,
+            "maxSockets": 4,
+            "model": "host-model",
+            "sockets": 1,
+            "threads": 1
+          },
+          "devices": {
+            "disks": [
+              {
+                "bootOrder": 1,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-0"
+              },
+              {
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "cloudinitdisk"
+              }
+            ],
+            "inputs": [
+              {
+                "bus": "usb",
+                "name": "tablet",
+                "type": "tablet"
+              }
+            ],
+            "interfaces": [
+              {
+                "bridge": {},
+                "model": "virtio",
+                "name": "default"
+              }
+            ]
+          },
+          "features": {
+            "acpi": {
+              "enabled": true
+            }
+          },
+          "firmware": {
+            "uuid": "b065f12b-4766-564d-92b4-c0a16daa314c"
+          },
+          "machine": {
+            "type": "q35"
+          },
+          "memory": {
+            "guest": "2Gi",
+            "maxGuest": "8Gi"
+          },
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "62m",
+              "memory": "1365Mi"
+            }
+          }
+        },
+        "evictionStrategy": "LiveMigrateIfPossible",
+        "hostname": "liberated",
+        "networks": [
+          {
+            "multus": {
+              "networkName": "default/vlan1"
+            },
+            "name": "default"
+          }
+        ],
+        "terminationGracePeriodSeconds": 120,
+        "volumes": [
+          {
+            "name": "disk-0",
+            "persistentVolumeClaim": {
+              "claimName": "liberated-disk-0-myhc7"
+            }
+          },
+          {
+            "cloudInitNoCloud": {
+              "networkDataSecretRef": {
+                "name": "liberated-yalu1"
+              },
+              "secretRef": {
+                "name": "liberated-yalu1"
+              }
+            },
+            "name": "cloudinitdisk"
+          }
+        ]
+      },
+      "status": {
+        "activePods": {
+          "76af4a9e-1cc6-448d-8e15-3067e911ccef": "gr6-3",
+          "9fc37adf-6f15-4b8d-9041-e6f85986da01": "gr6-1"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2025-02-28T14:26:56Z",
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "LiveMigratable"
+          },
+          {
+            "lastProbeTime": "2025-02-28T14:25:02Z",
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "AgentConnected"
+          }
+        ],
+        "currentCPUTopology": {
+          "cores": 1,
+          "sockets": 1,
+          "threads": 1
+        },
+        "guestOSInfo": {
+          "id": "centos",
+          "kernelRelease": "3.10.0-1160.80.1.el7.x86_64",
+          "kernelVersion": "#1 SMP Tue Nov 8 15:48:59 UTC 2022",
+          "machine": "x86_64",
+          "name": "CentOS Linux",
+          "prettyName": "CentOS Linux 7 (Core)",
+          "version": "7 (Core)",
+          "versionId": "7"
+        },
+        "interfaces": [
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth0",
+            "ipAddress": "10.0.0.192",
+            "ipAddresses": [
+              "10.0.0.192"
+            ],
+            "mac": "b2:d2:0d:a3:c5:c2",
+            "name": "default",
+            "queueCount": 1
+          }
+        ],
+        "launcherContainerImageVersion": "registry.suse.com/suse/sles/15.5/virt-launcher:1.2.2-150500.8.21.1",
+        "machine": {
+          "type": "pc-q35-7.1"
+        },
+        "memory": {
+          "guestAtBoot": "2Gi",
+          "guestCurrent": "2Gi",
+          "guestRequested": "2Gi"
+        },
+        "migrationMethod": "BlockMigration",
+        "migrationState": {
+          "completed": true,
+          "endTimestamp": "2025-02-28T14:26:56Z",
+          "migrationConfiguration": {
+            "allowAutoConverge": false,
+            "allowPostCopy": false,
+            "bandwidthPerMigration": "0",
+            "completionTimeoutPerGiB": 800,
+            "nodeDrainTaintKey": "kubevirt.io/drain",
+            "parallelMigrationsPerCluster": 5,
+            "parallelOutboundMigrationsPerNode": 2,
+            "progressTimeout": 150,
+            "unsafeMigrationOverride": false
+          },
+          "migrationUid": "b4508194-a21c-4ecc-b3fe-c1ae40676413",
+          "mode": "PreCopy",
+          "sourceNode": "gr6-1",
+          "sourcePod": "virt-launcher-liberated-hbr5g",
+          "startTimestamp": "2025-02-28T14:26:49Z",
+          "targetDirectMigrationNodePorts": {
+            "33481": 49153,
+            "33739": 0,
+            "37391": 49152
+          },
+          "targetNode": "gr6-3",
+          "targetNodeAddress": "10.52.0.206",
+          "targetNodeDomainDetected": true,
+          "targetNodeDomainReadyTimestamp": "2025-02-28T14:26:56Z",
+          "targetPod": "virt-launcher-liberated-lf2lj"
+        },
+        "migrationTransport": "Unix",
+        "nodeName": "gr6-3",
+        "phase": "Running",
+        "phaseTransitionTimestamps": [
+          {
+            "phase": "Pending",
+            "phaseTransitionTimestamp": "2025-02-28T14:24:23Z"
+          },
+          {
+            "phase": "Scheduling",
+            "phaseTransitionTimestamp": "2025-02-28T14:24:23Z"
+          },
+          {
+            "phase": "Scheduled",
+            "phaseTransitionTimestamp": "2025-02-28T14:24:40Z"
+          },
+          {
+            "phase": "Running",
+            "phaseTransitionTimestamp": "2025-02-28T14:24:42Z"
+          }
+        ],
+        "qosClass": "Burstable",
+        "runtimeUser": 107,
+        "selinuxContext": "none",
+        "virtualMachineRevisionName": "revision-start-vm-472f5e56-a75d-496f-965c-e715dd9cc318-1",
+        "volumeStatus": [
+          {
+            "name": "cloudinitdisk",
+            "size": 1048576,
+            "target": "vdb"
+          },
+          {
+            "name": "disk-0",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "20Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "20Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vda"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "kubevirt.io/v1",
+      "kind": "VirtualMachineInstance",
+      "metadata": {
+        "annotations": {
+          "harvesterhci.io/sshNames": "[\"default/someone\"]",
+          "kubevirt.io/latest-observed-api-version": "v1",
+          "kubevirt.io/nonroot": "true",
+          "kubevirt.io/storage-observed-api-version": "v1",
+          "kubevirt.io/vm-generation": "3"
+        },
+        "creationTimestamp": "2025-02-18T17:56:31Z",
+        "finalizers": [
+          "kubevirt.io/virtualMachineControllerFinalize",
+          "foregroundDeleteVirtualMachine",
+          "wrangler.cattle.io/harvester-lb-vmi-controller"
+        ],
+        "generation": 5344,
+        "labels": {
+          "harvesterhci.io/vmName": "rhel-clone2",
+          "kubevirt.io/migrationTargetNodeName": "gr6-3",
+          "kubevirt.io/nodeName": "gr6-3"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  "v:\"wrangler.cattle.io/harvester-lb-vmi-controller\"": {}
+                }
+              }
+            },
+            "manager": "harvester-load-balancer",
+            "operation": "Update",
+            "time": "2025-02-18T17:56:31Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:harvesterhci.io/sshNames": {},
+                  "f:kubevirt.io/latest-observed-api-version": {},
+                  "f:kubevirt.io/nonroot": {},
+                  "f:kubevirt.io/storage-observed-api-version": {},
+                  "f:kubevirt.io/vm-generation": {}
+                },
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"kubevirt.io/virtualMachineControllerFinalize\"": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:harvesterhci.io/vmName": {},
+                  "f:kubevirt.io/migrationTargetNodeName": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"31b613ce-a470-44ab-be05-672f5e3d6061\"}": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:affinity": {
+                  ".": {},
+                  "f:nodeAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {
+                      ".": {},
+                      "f:nodeSelectorTerms": {}
+                    }
+                  },
+                  "f:podAffinity": {},
+                  "f:podAntiAffinity": {}
+                },
+                "f:architecture": {},
+                "f:domain": {
+                  ".": {},
+                  "f:cpu": {
+                    ".": {},
+                    "f:cores": {},
+                    "f:maxSockets": {},
+                    "f:sockets": {},
+                    "f:threads": {}
+                  },
+                  "f:devices": {
+                    ".": {},
+                    "f:disks": {},
+                    "f:inputs": {},
+                    "f:interfaces": {},
+                    "f:tpm": {}
+                  },
+                  "f:features": {
+                    ".": {},
+                    "f:acpi": {
+                      ".": {},
+                      "f:enabled": {}
+                    },
+                    "f:smm": {
+                      ".": {},
+                      "f:enabled": {}
+                    }
+                  },
+                  "f:firmware": {
+                    ".": {},
+                    "f:bootloader": {
+                      ".": {},
+                      "f:efi": {
+                        ".": {},
+                        "f:secureBoot": {}
+                      }
+                    },
+                    "f:uuid": {}
+                  },
+                  "f:machine": {
+                    ".": {},
+                    "f:type": {}
+                  },
+                  "f:memory": {
+                    ".": {},
+                    "f:guest": {},
+                    "f:maxGuest": {}
+                  },
+                  "f:resources": {
+                    ".": {},
+                    "f:limits": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    },
+                    "f:requests": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    }
+                  }
+                },
+                "f:evictionStrategy": {},
+                "f:hostname": {},
+                "f:networks": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {}
+              },
+              "f:status": {
+                ".": {},
+                "f:activePods": {
+                  ".": {},
+                  "f:6c148ed0-a85d-4262-9f72-38490dcfd93e": {},
+                  "f:7dc0e723-f0b3-4415-911b-b9896a7a7c80": {},
+                  "f:8f8ebc49-d7b9-4a1d-b9d4-824c3617e86e": {},
+                  "f:dc5674c8-f3ae-4bec-8d82-fca577e88d00": {},
+                  "f:fe7afebd-7155-466e-80b6-ccb8afc75cd0": {}
+                },
+                "f:conditions": {},
+                "f:currentCPUTopology": {
+                  ".": {},
+                  "f:cores": {},
+                  "f:sockets": {},
+                  "f:threads": {}
+                },
+                "f:guestOSInfo": {},
+                "f:launcherContainerImageVersion": {},
+                "f:migrationState": {
+                  ".": {},
+                  "f:migrationConfiguration": {
+                    ".": {},
+                    "f:allowAutoConverge": {},
+                    "f:allowPostCopy": {},
+                    "f:bandwidthPerMigration": {},
+                    "f:completionTimeoutPerGiB": {},
+                    "f:nodeDrainTaintKey": {},
+                    "f:parallelMigrationsPerCluster": {},
+                    "f:parallelOutboundMigrationsPerNode": {},
+                    "f:progressTimeout": {},
+                    "f:unsafeMigrationOverride": {}
+                  },
+                  "f:migrationUid": {},
+                  "f:sourceNode": {},
+                  "f:sourcePod": {},
+                  "f:targetNode": {},
+                  "f:targetPod": {}
+                },
+                "f:migrationTransport": {},
+                "f:qosClass": {},
+                "f:runtimeUser": {},
+                "f:virtualMachineRevisionName": {}
+              }
+            },
+            "manager": "virt-controller",
+            "operation": "Update",
+            "time": "2025-02-28T14:27:17Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  "f:kubevirt.io/nodeName": {}
+                }
+              },
+              "f:status": {
+                "f:guestOSInfo": {
+                  "f:id": {},
+                  "f:kernelRelease": {},
+                  "f:kernelVersion": {},
+                  "f:machine": {},
+                  "f:name": {},
+                  "f:prettyName": {},
+                  "f:version": {},
+                  "f:versionId": {}
+                },
+                "f:interfaces": {},
+                "f:machine": {
+                  ".": {},
+                  "f:type": {}
+                },
+                "f:migrationMethod": {},
+                "f:migrationState": {
+                  "f:completed": {},
+                  "f:endTimestamp": {},
+                  "f:mode": {},
+                  "f:startTimestamp": {},
+                  "f:targetDirectMigrationNodePorts": {
+                    ".": {},
+                    "f:34967": {},
+                    "f:43847": {},
+                    "f:44215": {}
+                  },
+                  "f:targetNodeAddress": {},
+                  "f:targetNodeDomainDetected": {},
+                  "f:targetNodeDomainReadyTimestamp": {}
+                },
+                "f:nodeName": {},
+                "f:phase": {},
+                "f:phaseTransitionTimestamps": {},
+                "f:selinuxContext": {},
+                "f:volumeStatus": {}
+              }
+            },
+            "manager": "virt-handler",
+            "operation": "Update",
+            "time": "2025-03-05T09:05:47Z"
+          }
+        ],
+        "name": "rhel-clone2",
+        "namespace": "default",
+        "ownerReferences": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "VirtualMachine",
+            "name": "rhel-clone2",
+            "uid": "31b613ce-a470-44ab-be05-672f5e3d6061"
+          }
+        ],
+        "resourceVersion": "449068949",
+        "uid": "fbfa5f0b-3322-491f-9a80-ac4a8bc3444b"
+      },
+      "spec": {
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchExpressions": [
+                    {
+                      "key": "network.harvesterhci.io/mgmt",
+                      "operator": "In",
+                      "values": [
+                        "true"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "podAffinity": {},
+          "podAntiAffinity": {}
+        },
+        "architecture": "amd64",
+        "domain": {
+          "cpu": {
+            "cores": 2,
+            "maxSockets": 8,
+            "model": "host-model",
+            "sockets": 2,
+            "threads": 1
+          },
+          "devices": {
+            "disks": [
+              {
+                "bootOrder": 1,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-0"
+              },
+              {
+                "bootOrder": 2,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-1"
+              },
+              {
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "cloudinitdisk"
+              }
+            ],
+            "inputs": [
+              {
+                "bus": "usb",
+                "name": "tablet",
+                "type": "tablet"
+              }
+            ],
+            "interfaces": [
+              {
+                "bridge": {},
+                "model": "virtio",
+                "name": "default"
+              },
+              {
+                "bridge": {},
+                "model": "virtio",
+                "name": "nic-1"
+              }
+            ],
+            "tpm": {}
+          },
+          "features": {
+            "acpi": {
+              "enabled": true
+            },
+            "smm": {
+              "enabled": true
+            }
+          },
+          "firmware": {
+            "bootloader": {
+              "efi": {
+                "secureBoot": true
+              }
+            },
+            "uuid": "16a0d2a8-2180-5333-ac52-95d7ad8a9ab8"
+          },
+          "machine": {
+            "type": "q35"
+          },
+          "memory": {
+            "guest": "4Gi",
+            "maxGuest": "16Gi"
+          },
+          "resources": {
+            "limits": {
+              "cpu": "2",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "125m",
+              "memory": "2730Mi"
+            }
+          }
+        },
+        "evictionStrategy": "LiveMigrateIfPossible",
+        "hostname": "rhel-clone2",
+        "networks": [
+          {
+            "multus": {
+              "networkName": "default/vlan1"
+            },
+            "name": "default"
+          },
+          {
+            "multus": {
+              "networkName": "default/secure"
+            },
+            "name": "nic-1"
+          }
+        ],
+        "terminationGracePeriodSeconds": 120,
+        "volumes": [
+          {
+            "name": "disk-0",
+            "persistentVolumeClaim": {
+              "claimName": "rhel-clone2-disk-0-cj6fx"
+            }
+          },
+          {
+            "name": "disk-1",
+            "persistentVolumeClaim": {
+              "claimName": "rhel-clone2-disk-1-zgn72"
+            }
+          },
+          {
+            "cloudInitNoCloud": {
+              "networkDataSecretRef": {
+                "name": "rhel-clone2-g9qjg"
+              },
+              "secretRef": {
+                "name": "rhel-clone2-g9qjg"
+              }
+            },
+            "name": "cloudinitdisk"
+          }
+        ]
+      },
+      "status": {
+        "activePods": {
+          "6c148ed0-a85d-4262-9f72-38490dcfd93e": "gr6-1",
+          "7dc0e723-f0b3-4415-911b-b9896a7a7c80": "gr6-3",
+          "8f8ebc49-d7b9-4a1d-b9d4-824c3617e86e": "gr6-1",
+          "dc5674c8-f3ae-4bec-8d82-fca577e88d00": "gr6-3",
+          "fe7afebd-7155-466e-80b6-ccb8afc75cd0": "gr6-3"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2025-02-28T14:27:17Z",
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "LiveMigratable"
+          },
+          {
+            "lastProbeTime": "2025-02-18T17:57:22Z",
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "AgentConnected"
+          }
+        ],
+        "currentCPUTopology": {
+          "cores": 2,
+          "sockets": 2,
+          "threads": 1
+        },
+        "guestOSInfo": {
+          "id": "rhel",
+          "kernelRelease": "5.14.0-362.18.1.el9_3.x86_64",
+          "kernelVersion": "#1 SMP PREEMPT_DYNAMIC Wed Jan 3 15:54:45 EST 2024",
+          "machine": "x86_64",
+          "name": "Red Hat Enterprise Linux",
+          "prettyName": "Red Hat Enterprise Linux 9.3 (Plow)",
+          "version": "9.3 (Plow)",
+          "versionId": "9.3"
+        },
+        "interfaces": [
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth0",
+            "ipAddress": "10.0.0.31",
+            "ipAddresses": [
+              "10.0.0.31"
+            ],
+            "mac": "16:64:43:ac:21:5e",
+            "name": "default",
+            "queueCount": 1
+          },
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth1",
+            "mac": "86:b9:2b:bc:b9:80",
+            "name": "nic-1",
+            "queueCount": 1
+          }
+        ],
+        "launcherContainerImageVersion": "registry.suse.com/suse/sles/15.5/virt-launcher:1.2.2-150500.8.21.1",
+        "machine": {
+          "type": "pc-q35-7.1"
+        },
+        "memory": {
+          "guestAtBoot": "4Gi",
+          "guestCurrent": "4Gi",
+          "guestRequested": "4Gi"
+        },
+        "migrationMethod": "BlockMigration",
+        "migrationState": {
+          "completed": true,
+          "endTimestamp": "2025-02-28T14:27:17Z",
+          "migrationConfiguration": {
+            "allowAutoConverge": false,
+            "allowPostCopy": false,
+            "bandwidthPerMigration": "0",
+            "completionTimeoutPerGiB": 800,
+            "nodeDrainTaintKey": "kubevirt.io/drain",
+            "parallelMigrationsPerCluster": 5,
+            "parallelOutboundMigrationsPerNode": 2,
+            "progressTimeout": 150,
+            "unsafeMigrationOverride": false
+          },
+          "migrationUid": "582ca3e9-5bee-4f79-a247-5b3a960bbf87",
+          "mode": "PreCopy",
+          "sourceNode": "gr6-1",
+          "sourcePod": "virt-launcher-rhel-clone2-pm42j",
+          "startTimestamp": "2025-02-28T14:27:03Z",
+          "targetDirectMigrationNodePorts": {
+            "34967": 0,
+            "43847": 49152,
+            "44215": 49153
+          },
+          "targetNode": "gr6-3",
+          "targetNodeAddress": "10.52.0.206",
+          "targetNodeDomainDetected": true,
+          "targetNodeDomainReadyTimestamp": "2025-02-28T14:27:17Z",
+          "targetPod": "virt-launcher-rhel-clone2-nf6ql"
+        },
+        "migrationTransport": "Unix",
+        "nodeName": "gr6-3",
+        "phase": "Running",
+        "phaseTransitionTimestamps": [
+          {
+            "phase": "Pending",
+            "phaseTransitionTimestamp": "2025-02-18T17:56:31Z"
+          },
+          {
+            "phase": "Scheduling",
+            "phaseTransitionTimestamp": "2025-02-18T17:56:31Z"
+          },
+          {
+            "phase": "Scheduled",
+            "phaseTransitionTimestamp": "2025-02-18T17:56:52Z"
+          },
+          {
+            "phase": "Running",
+            "phaseTransitionTimestamp": "2025-02-18T17:56:55Z"
+          }
+        ],
+        "qosClass": "Burstable",
+        "runtimeUser": 107,
+        "selinuxContext": "none",
+        "virtualMachineRevisionName": "revision-start-vm-31b613ce-a470-44ab-be05-672f5e3d6061-2",
+        "volumeStatus": [
+          {
+            "name": "cloudinitdisk",
+            "size": 1048576,
+            "target": "vdc"
+          },
+          {
+            "name": "disk-0",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "25Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "25Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vda"
+          },
+          {
+            "name": "disk-1",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "20Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "20Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vdb"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "kubevirt.io/v1",
+      "kind": "VirtualMachineInstance",
+      "metadata": {
+        "annotations": {
+          "harvesterhci.io/sshNames": "[\"default/someone\"]",
+          "kubevirt.io/latest-observed-api-version": "v1",
+          "kubevirt.io/nonroot": "true",
+          "kubevirt.io/storage-observed-api-version": "v1",
+          "kubevirt.io/vm-generation": "37"
+        },
+        "creationTimestamp": "2025-02-15T12:18:01Z",
+        "finalizers": [
+          "kubevirt.io/virtualMachineControllerFinalize",
+          "foregroundDeleteVirtualMachine",
+          "wrangler.cattle.io/harvester-lb-vmi-controller"
+        ],
+        "generation": 6559,
+        "labels": {
+          "harvesterhci.io/vmName": "rhel9-demo",
+          "kubevirt.io/migrationTargetNodeName": "gr6-3",
+          "kubevirt.io/nodeName": "gr6-3"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  "v:\"wrangler.cattle.io/harvester-lb-vmi-controller\"": {}
+                }
+              }
+            },
+            "manager": "harvester-load-balancer",
+            "operation": "Update",
+            "time": "2025-02-15T12:18:01Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:harvesterhci.io/sshNames": {},
+                  "f:kubevirt.io/latest-observed-api-version": {},
+                  "f:kubevirt.io/nonroot": {},
+                  "f:kubevirt.io/storage-observed-api-version": {},
+                  "f:kubevirt.io/vm-generation": {}
+                },
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"kubevirt.io/virtualMachineControllerFinalize\"": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:harvesterhci.io/vmName": {},
+                  "f:kubevirt.io/migrationTargetNodeName": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"399b6ae9-50c4-4b27-be47-cb5bbf45f6d6\"}": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:affinity": {
+                  ".": {},
+                  "f:nodeAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {
+                      ".": {},
+                      "f:nodeSelectorTerms": {}
+                    }
+                  },
+                  "f:podAffinity": {},
+                  "f:podAntiAffinity": {}
+                },
+                "f:architecture": {},
+                "f:domain": {
+                  ".": {},
+                  "f:cpu": {
+                    ".": {},
+                    "f:cores": {},
+                    "f:maxSockets": {},
+                    "f:sockets": {},
+                    "f:threads": {}
+                  },
+                  "f:devices": {
+                    ".": {},
+                    "f:disks": {},
+                    "f:inputs": {},
+                    "f:interfaces": {},
+                    "f:tpm": {}
+                  },
+                  "f:features": {
+                    ".": {},
+                    "f:acpi": {
+                      ".": {},
+                      "f:enabled": {}
+                    },
+                    "f:smm": {
+                      ".": {},
+                      "f:enabled": {}
+                    }
+                  },
+                  "f:firmware": {
+                    ".": {},
+                    "f:bootloader": {
+                      ".": {},
+                      "f:efi": {
+                        ".": {},
+                        "f:secureBoot": {}
+                      }
+                    },
+                    "f:uuid": {}
+                  },
+                  "f:machine": {
+                    ".": {},
+                    "f:type": {}
+                  },
+                  "f:memory": {
+                    ".": {},
+                    "f:guest": {},
+                    "f:maxGuest": {}
+                  },
+                  "f:resources": {
+                    ".": {},
+                    "f:limits": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    },
+                    "f:requests": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    }
+                  }
+                },
+                "f:evictionStrategy": {},
+                "f:hostname": {},
+                "f:networks": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {}
+              },
+              "f:status": {
+                ".": {},
+                "f:activePods": {
+                  ".": {},
+                  "f:0021ee73-1068-4780-a971-740d0d557655": {},
+                  "f:16e9550c-8074-4145-bee7-f554ec3061a8": {},
+                  "f:2ff87d4a-2529-460c-9590-5e2a0204f0d8": {},
+                  "f:4c89c2aa-a740-4d7d-b0e6-b19422c6dcc5": {},
+                  "f:64457861-8d52-432f-8239-93d59debeff7": {},
+                  "f:80b53272-fed1-4ac0-8aff-d23acdae925d": {},
+                  "f:9ee2e72f-e67a-45f7-89aa-c3d6e81789ed": {},
+                  "f:ac9681fd-e781-4b9c-804e-35b7e898e25a": {},
+                  "f:af74018b-a5ee-4903-8186-0b7cc2601f61": {},
+                  "f:e5635b6b-8cb3-4bf6-ad37-c2264109f5d3": {}
+                },
+                "f:conditions": {},
+                "f:currentCPUTopology": {
+                  ".": {},
+                  "f:cores": {},
+                  "f:sockets": {},
+                  "f:threads": {}
+                },
+                "f:guestOSInfo": {},
+                "f:launcherContainerImageVersion": {},
+                "f:migrationState": {
+                  ".": {},
+                  "f:migrationConfiguration": {
+                    ".": {},
+                    "f:allowAutoConverge": {},
+                    "f:allowPostCopy": {},
+                    "f:bandwidthPerMigration": {},
+                    "f:completionTimeoutPerGiB": {},
+                    "f:nodeDrainTaintKey": {},
+                    "f:parallelMigrationsPerCluster": {},
+                    "f:parallelOutboundMigrationsPerNode": {},
+                    "f:progressTimeout": {},
+                    "f:unsafeMigrationOverride": {}
+                  },
+                  "f:migrationUid": {},
+                  "f:sourceNode": {},
+                  "f:sourcePod": {},
+                  "f:targetNode": {},
+                  "f:targetPod": {}
+                },
+                "f:migrationTransport": {},
+                "f:qosClass": {},
+                "f:runtimeUser": {},
+                "f:virtualMachineRevisionName": {}
+              }
+            },
+            "manager": "virt-controller",
+            "operation": "Update",
+            "time": "2025-02-28T16:46:32Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  "f:kubevirt.io/nodeName": {}
+                }
+              },
+              "f:status": {
+                "f:guestOSInfo": {
+                  "f:id": {},
+                  "f:kernelRelease": {},
+                  "f:kernelVersion": {},
+                  "f:machine": {},
+                  "f:name": {},
+                  "f:prettyName": {},
+                  "f:version": {},
+                  "f:versionId": {}
+                },
+                "f:interfaces": {},
+                "f:machine": {
+                  ".": {},
+                  "f:type": {}
+                },
+                "f:migrationMethod": {},
+                "f:migrationState": {
+                  "f:completed": {},
+                  "f:endTimestamp": {},
+                  "f:mode": {},
+                  "f:startTimestamp": {},
+                  "f:targetDirectMigrationNodePorts": {
+                    ".": {},
+                    "f:41467": {},
+                    "f:41481": {},
+                    "f:44073": {}
+                  },
+                  "f:targetNodeAddress": {},
+                  "f:targetNodeDomainDetected": {},
+                  "f:targetNodeDomainReadyTimestamp": {}
+                },
+                "f:nodeName": {},
+                "f:phase": {},
+                "f:phaseTransitionTimestamps": {},
+                "f:selinuxContext": {},
+                "f:volumeStatus": {}
+              }
+            },
+            "manager": "virt-handler",
+            "operation": "Update",
+            "time": "2025-03-05T09:07:02Z"
+          }
+        ],
+        "name": "rhel9-demo",
+        "namespace": "default",
+        "ownerReferences": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "VirtualMachine",
+            "name": "rhel9-demo",
+            "uid": "399b6ae9-50c4-4b27-be47-cb5bbf45f6d6"
+          }
+        ],
+        "resourceVersion": "449070230",
+        "uid": "36663d1c-6fc3-4ecc-a89c-bc098373b61c"
+      },
+      "spec": {
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchExpressions": [
+                    {
+                      "key": "network.harvesterhci.io/mgmt",
+                      "operator": "In",
+                      "values": [
+                        "true"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "podAffinity": {},
+          "podAntiAffinity": {}
+        },
+        "architecture": "amd64",
+        "domain": {
+          "cpu": {
+            "cores": 1,
+            "maxSockets": 4,
+            "model": "host-model",
+            "sockets": 1,
+            "threads": 1
+          },
+          "devices": {
+            "disks": [
+              {
+                "bootOrder": 1,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-0"
+              },
+              {
+                "bootOrder": 2,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-1"
+              },
+              {
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "cloudinitdisk"
+              }
+            ],
+            "inputs": [
+              {
+                "bus": "usb",
+                "name": "tablet",
+                "type": "tablet"
+              }
+            ],
+            "interfaces": [
+              {
+                "bridge": {},
+                "macAddress": "e6:8c:3a:81:5c:c9",
+                "model": "virtio",
+                "name": "default"
+              },
+              {
+                "bridge": {},
+                "macAddress": "96:ae:87:2e:17:f2",
+                "model": "virtio",
+                "name": "nic-1"
+              }
+            ],
+            "tpm": {}
+          },
+          "features": {
+            "acpi": {
+              "enabled": true
+            },
+            "smm": {
+              "enabled": true
+            }
+          },
+          "firmware": {
+            "bootloader": {
+              "efi": {
+                "secureBoot": true
+              }
+            },
+            "uuid": "c360ef89-83b6-5d61-bac3-243e02913929"
+          },
+          "machine": {
+            "type": "q35"
+          },
+          "memory": {
+            "guest": "4Gi",
+            "maxGuest": "16Gi"
+          },
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "4Gi"
+            },
+            "requests": {
+              "cpu": "250m",
+              "memory": "2730Mi"
+            }
+          }
+        },
+        "evictionStrategy": "LiveMigrateIfPossible",
+        "hostname": "rhel9-demo",
+        "networks": [
+          {
+            "multus": {
+              "networkName": "default/vlan1"
+            },
+            "name": "default"
+          },
+          {
+            "multus": {
+              "networkName": "default/secure"
+            },
+            "name": "nic-1"
+          }
+        ],
+        "terminationGracePeriodSeconds": 120,
+        "volumes": [
+          {
+            "name": "disk-0",
+            "persistentVolumeClaim": {
+              "claimName": "rhel9-demo-disk-0-savgo"
+            }
+          },
+          {
+            "name": "disk-1",
+            "persistentVolumeClaim": {
+              "claimName": "rhel9-demo-disk-1-bs69z"
+            }
+          },
+          {
+            "cloudInitNoCloud": {
+              "networkDataSecretRef": {
+                "name": "rhel9-demo-gsvke"
+              },
+              "secretRef": {
+                "name": "rhel9-demo-gsvke"
+              }
+            },
+            "name": "cloudinitdisk"
+          }
+        ]
+      },
+      "status": {
+        "activePods": {
+          "0021ee73-1068-4780-a971-740d0d557655": "gr6-1",
+          "16e9550c-8074-4145-bee7-f554ec3061a8": "gr6-1",
+          "2ff87d4a-2529-460c-9590-5e2a0204f0d8": "gr6-1",
+          "4c89c2aa-a740-4d7d-b0e6-b19422c6dcc5": "gr6-1",
+          "64457861-8d52-432f-8239-93d59debeff7": "gr6-3",
+          "80b53272-fed1-4ac0-8aff-d23acdae925d": "gr6-3",
+          "9ee2e72f-e67a-45f7-89aa-c3d6e81789ed": "gr6-1",
+          "ac9681fd-e781-4b9c-804e-35b7e898e25a": "gr6-3",
+          "af74018b-a5ee-4903-8186-0b7cc2601f61": "gr6-3",
+          "e5635b6b-8cb3-4bf6-ad37-c2264109f5d3": "gr6-3"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2025-02-28T16:46:32Z",
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "LiveMigratable"
+          },
+          {
+            "lastProbeTime": "2025-02-15T12:18:39Z",
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "AgentConnected"
+          }
+        ],
+        "currentCPUTopology": {
+          "cores": 1,
+          "sockets": 1,
+          "threads": 1
+        },
+        "guestOSInfo": {
+          "id": "rhel",
+          "kernelRelease": "5.14.0-362.18.1.el9_3.x86_64",
+          "kernelVersion": "#1 SMP PREEMPT_DYNAMIC Wed Jan 3 15:54:45 EST 2024",
+          "machine": "x86_64",
+          "name": "Red Hat Enterprise Linux",
+          "prettyName": "Red Hat Enterprise Linux 9.3 (Plow)",
+          "version": "9.3 (Plow)",
+          "versionId": "9.3"
+        },
+        "interfaces": [
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth0",
+            "ipAddress": "10.0.0.193",
+            "ipAddresses": [
+              "10.0.0.193"
+            ],
+            "mac": "e6:8c:3a:81:5c:c9",
+            "name": "default",
+            "queueCount": 1
+          },
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth1",
+            "ipAddress": "fe80::eeff:112c:e0f9:23d1",
+            "ipAddresses": [
+              "fe80::eeff:112c:e0f9:23d1"
+            ],
+            "mac": "96:ae:87:2e:17:f2",
+            "name": "nic-1",
+            "queueCount": 1
+          }
+        ],
+        "launcherContainerImageVersion": "registry.suse.com/suse/sles/15.5/virt-launcher:1.2.2-150500.8.21.1",
+        "machine": {
+          "type": "pc-q35-7.1"
+        },
+        "memory": {
+          "guestAtBoot": "4Gi",
+          "guestCurrent": "4Gi",
+          "guestRequested": "4Gi"
+        },
+        "migrationMethod": "BlockMigration",
+        "migrationState": {
+          "completed": true,
+          "endTimestamp": "2025-02-28T16:46:32Z",
+          "migrationConfiguration": {
+            "allowAutoConverge": false,
+            "allowPostCopy": false,
+            "bandwidthPerMigration": "0",
+            "completionTimeoutPerGiB": 800,
+            "nodeDrainTaintKey": "kubevirt.io/drain",
+            "parallelMigrationsPerCluster": 5,
+            "parallelOutboundMigrationsPerNode": 2,
+            "progressTimeout": 150,
+            "unsafeMigrationOverride": false
+          },
+          "migrationUid": "f0260a12-7a9e-438a-bf57-e300930b2915",
+          "mode": "PreCopy",
+          "sourceNode": "gr6-1",
+          "sourcePod": "virt-launcher-rhel9-demo-tvw5k",
+          "startTimestamp": "2025-02-28T16:46:19Z",
+          "targetDirectMigrationNodePorts": {
+            "41467": 0,
+            "41481": 49153,
+            "44073": 49152
+          },
+          "targetNode": "gr6-3",
+          "targetNodeAddress": "10.52.0.206",
+          "targetNodeDomainDetected": true,
+          "targetNodeDomainReadyTimestamp": "2025-02-28T16:46:31Z",
+          "targetPod": "virt-launcher-rhel9-demo-56rwh"
+        },
+        "migrationTransport": "Unix",
+        "nodeName": "gr6-3",
+        "phase": "Running",
+        "phaseTransitionTimestamps": [
+          {
+            "phase": "Pending",
+            "phaseTransitionTimestamp": "2025-02-15T12:18:01Z"
+          },
+          {
+            "phase": "Scheduling",
+            "phaseTransitionTimestamp": "2025-02-15T12:18:01Z"
+          },
+          {
+            "phase": "Scheduled",
+            "phaseTransitionTimestamp": "2025-02-15T12:18:14Z"
+          },
+          {
+            "phase": "Running",
+            "phaseTransitionTimestamp": "2025-02-15T12:18:17Z"
+          }
+        ],
+        "qosClass": "Burstable",
+        "runtimeUser": 107,
+        "selinuxContext": "none",
+        "virtualMachineRevisionName": "revision-start-vm-399b6ae9-50c4-4b27-be47-cb5bbf45f6d6-37",
+        "volumeStatus": [
+          {
+            "name": "cloudinitdisk",
+            "size": 1048576,
+            "target": "vdc"
+          },
+          {
+            "name": "disk-0",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "25Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "25Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vda"
+          },
+          {
+            "name": "disk-1",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "20Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "20Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vdb"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "kubevirt.io/v1",
+      "kind": "VirtualMachineInstance",
+      "metadata": {
+        "annotations": {
+          "harvesterhci.io/sshNames": "[]",
+          "kubevirt.io/latest-observed-api-version": "v1",
+          "kubevirt.io/storage-observed-api-version": "v1",
+          "kubevirt.io/vm-generation": "6"
+        },
+        "creationTimestamp": "2025-03-04T21:36:57Z",
+        "finalizers": [
+          "kubevirt.io/virtualMachineControllerFinalize",
+          "foregroundDeleteVirtualMachine",
+          "wrangler.cattle.io/harvester-lb-vmi-controller"
+        ],
+        "generation": 11,
+        "labels": {
+          "harvesterhci.io/vmName": "sles15-sp5",
+          "kubevirt.io/nodeName": "gr6-1"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  "v:\"wrangler.cattle.io/harvester-lb-vmi-controller\"": {}
+                }
+              }
+            },
+            "manager": "harvester-load-balancer",
+            "operation": "Update",
+            "time": "2025-03-04T21:36:57Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:harvesterhci.io/sshNames": {},
+                  "f:kubevirt.io/latest-observed-api-version": {},
+                  "f:kubevirt.io/storage-observed-api-version": {},
+                  "f:kubevirt.io/vm-generation": {}
+                },
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"kubevirt.io/virtualMachineControllerFinalize\"": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:harvesterhci.io/vmName": {},
+                  "f:kubevirt.io/nodeName": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"3243c4f8-7073-4e56-9b3e-910d92b62392\"}": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:affinity": {
+                  ".": {},
+                  "f:nodeAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {
+                      ".": {},
+                      "f:nodeSelectorTerms": {}
+                    }
+                  }
+                },
+                "f:architecture": {},
+                "f:domain": {
+                  ".": {},
+                  "f:cpu": {
+                    ".": {},
+                    "f:cores": {},
+                    "f:maxSockets": {},
+                    "f:sockets": {},
+                    "f:threads": {}
+                  },
+                  "f:devices": {
+                    ".": {},
+                    "f:disks": {},
+                    "f:inputs": {},
+                    "f:interfaces": {}
+                  },
+                  "f:features": {
+                    ".": {},
+                    "f:acpi": {
+                      ".": {},
+                      "f:enabled": {}
+                    }
+                  },
+                  "f:firmware": {
+                    ".": {},
+                    "f:uuid": {}
+                  },
+                  "f:machine": {
+                    ".": {},
+                    "f:type": {}
+                  },
+                  "f:memory": {
+                    ".": {},
+                    "f:guest": {},
+                    "f:maxGuest": {}
+                  },
+                  "f:resources": {
+                    ".": {},
+                    "f:limits": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    },
+                    "f:requests": {
+                      ".": {},
+                      "f:cpu": {},
+                      "f:memory": {}
+                    }
+                  }
+                },
+                "f:evictionStrategy": {},
+                "f:hostname": {},
+                "f:networks": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {}
+              },
+              "f:status": {
+                ".": {},
+                "f:activePods": {
+                  ".": {},
+                  "f:a9c82850-6284-439d-b365-b222d593760b": {}
+                },
+                "f:currentCPUTopology": {
+                  ".": {},
+                  "f:cores": {},
+                  "f:sockets": {},
+                  "f:threads": {}
+                },
+                "f:guestOSInfo": {},
+                "f:launcherContainerImageVersion": {},
+                "f:migrationTransport": {},
+                "f:nodeName": {},
+                "f:qosClass": {},
+                "f:runtimeUser": {},
+                "f:virtualMachineRevisionName": {}
+              }
+            },
+            "manager": "virt-controller",
+            "operation": "Update",
+            "time": "2025-03-04T21:37:05Z"
+          },
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:conditions": {},
+                "f:guestOSInfo": {
+                  "f:id": {},
+                  "f:kernelRelease": {},
+                  "f:kernelVersion": {},
+                  "f:machine": {},
+                  "f:name": {},
+                  "f:prettyName": {},
+                  "f:version": {},
+                  "f:versionId": {}
+                },
+                "f:interfaces": {},
+                "f:machine": {
+                  ".": {},
+                  "f:type": {}
+                },
+                "f:migrationMethod": {},
+                "f:phase": {},
+                "f:phaseTransitionTimestamps": {},
+                "f:selinuxContext": {},
+                "f:volumeStatus": {}
+              }
+            },
+            "manager": "virt-handler",
+            "operation": "Update",
+            "time": "2025-03-04T21:37:31Z"
+          }
+        ],
+        "name": "sles15-sp5",
+        "namespace": "default",
+        "ownerReferences": [
+          {
+            "apiVersion": "kubevirt.io/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "VirtualMachine",
+            "name": "sles15-sp5",
+            "uid": "3243c4f8-7073-4e56-9b3e-910d92b62392"
+          }
+        ],
+        "resourceVersion": "448354939",
+        "uid": "2a8c6eeb-8777-4d28-bfbc-14ed3d018f79"
+      },
+      "spec": {
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchExpressions": [
+                    {
+                      "key": "network.harvesterhci.io/mgmt",
+                      "operator": "In",
+                      "values": [
+                        "true"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "architecture": "amd64",
+        "domain": {
+          "cpu": {
+            "cores": 1,
+            "maxSockets": 4,
+            "model": "host-model",
+            "sockets": 1,
+            "threads": 1
+          },
+          "devices": {
+            "disks": [
+              {
+                "bootOrder": 1,
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "disk-0"
+              },
+              {
+                "disk": {
+                  "bus": "virtio"
+                },
+                "name": "cloudinitdisk"
+              }
+            ],
+            "inputs": [
+              {
+                "bus": "usb",
+                "name": "tablet",
+                "type": "tablet"
+              }
+            ],
+            "interfaces": [
+              {
+                "bridge": {},
+                "macAddress": "6e:25:13:f5:b7:c9",
+                "model": "virtio",
+                "name": "default"
+              }
+            ]
+          },
+          "features": {
+            "acpi": {
+              "enabled": true
+            }
+          },
+          "firmware": {
+            "uuid": "c106b57b-2ee0-5fcc-ab05-ef897630f3bb"
+          },
+          "machine": {
+            "type": "q35"
+          },
+          "memory": {
+            "guest": "2Gi",
+            "maxGuest": "8Gi"
+          },
+          "resources": {
+            "limits": {
+              "cpu": "1",
+              "memory": "2Gi"
+            },
+            "requests": {
+              "cpu": "62m",
+              "memory": "1365Mi"
+            }
+          }
+        },
+        "evictionStrategy": "LiveMigrateIfPossible",
+        "hostname": "sles15-sp5",
+        "networks": [
+          {
+            "multus": {
+              "networkName": "default/vlan1"
+            },
+            "name": "default"
+          }
+        ],
+        "terminationGracePeriodSeconds": 120,
+        "volumes": [
+          {
+            "name": "disk-0",
+            "persistentVolumeClaim": {
+              "claimName": "sles15-sp5-disk-0-fhcbc"
+            }
+          },
+          {
+            "cloudInitNoCloud": {
+              "networkDataSecretRef": {
+                "name": "sles15-sp5-qylqr"
+              },
+              "secretRef": {
+                "name": "sles15-sp5-qylqr"
+              }
+            },
+            "name": "cloudinitdisk"
+          }
+        ]
+      },
+      "status": {
+        "activePods": {
+          "a9c82850-6284-439d-b365-b222d593760b": "gr6-1"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2025-03-04T21:37:03Z",
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "LiveMigratable"
+          },
+          {
+            "lastProbeTime": "2025-03-04T21:37:21Z",
+            "lastTransitionTime": null,
+            "status": "True",
+            "type": "AgentConnected"
+          }
+        ],
+        "currentCPUTopology": {
+          "cores": 1,
+          "sockets": 1,
+          "threads": 1
+        },
+        "guestOSInfo": {
+          "id": "sles",
+          "kernelRelease": "5.14.21-150500.53-default",
+          "kernelVersion": "#1 SMP PREEMPT_DYNAMIC Wed May 10 07:56:26 UTC 2023 (b630043)",
+          "machine": "x86_64",
+          "name": "SLES",
+          "prettyName": "SUSE Linux Enterprise Server 15 SP5",
+          "version": "15-SP5",
+          "versionId": "15.5"
+        },
+        "interfaces": [
+          {
+            "infoSource": "domain, guest-agent, multus-status",
+            "interfaceName": "eth0",
+            "ipAddress": "10.0.0.125",
+            "ipAddresses": [
+              "10.0.0.125"
+            ],
+            "mac": "6e:25:13:f5:b7:c9",
+            "name": "default",
+            "queueCount": 1
+          }
+        ],
+        "launcherContainerImageVersion": "registry.suse.com/suse/sles/15.5/virt-launcher:1.2.2-150500.8.21.1",
+        "machine": {
+          "type": "pc-q35-7.1"
+        },
+        "memory": {
+          "guestAtBoot": "2Gi",
+          "guestCurrent": "2Gi",
+          "guestRequested": "2Gi"
+        },
+        "migrationMethod": "BlockMigration",
+        "migrationTransport": "Unix",
+        "nodeName": "gr6-1",
+        "phase": "Running",
+        "phaseTransitionTimestamps": [
+          {
+            "phase": "Pending",
+            "phaseTransitionTimestamp": "2025-03-04T21:36:57Z"
+          },
+          {
+            "phase": "Scheduling",
+            "phaseTransitionTimestamp": "2025-03-04T21:36:57Z"
+          },
+          {
+            "phase": "Scheduled",
+            "phaseTransitionTimestamp": "2025-03-04T21:37:03Z"
+          },
+          {
+            "phase": "Running",
+            "phaseTransitionTimestamp": "2025-03-04T21:37:05Z"
+          }
+        ],
+        "qosClass": "Burstable",
+        "runtimeUser": 107,
+        "selinuxContext": "none",
+        "virtualMachineRevisionName": "revision-start-vm-3243c4f8-7073-4e56-9b3e-910d92b62392-6",
+        "volumeStatus": [
+          {
+            "name": "cloudinitdisk",
+            "size": 1048576,
+            "target": "vdb"
+          },
+          {
+            "name": "disk-0",
+            "persistentVolumeClaimInfo": {
+              "accessModes": [
+                "ReadWriteMany"
+              ],
+              "capacity": {
+                "storage": "20Gi"
+              },
+              "filesystemOverhead": "0.055",
+              "requests": {
+                "storage": "20Gi"
+              },
+              "volumeMode": "Block"
+            },
+            "target": "vda"
+          }
+        ]
+      }
+    }
+  ],
+  "kind": "VirtualMachineInstanceList",
+  "metadata": {
+    "continue": "",
+    "resourceVersion": "449072066"
+  }
+}
