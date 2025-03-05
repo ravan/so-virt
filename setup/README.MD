@@ -13,7 +13,6 @@ Ensure you have the following tools installed and properly configured:
 - **[Taskfile](https://taskfile.dev/installation/)** – A task runner for automating commands.
     - Supports tab completion, making it easy to view available tasks.
 - **[Gomplate](https://docs.gomplate.ca/installing/)** – A powerful template processor.
-- **[Lima](https://lima-vm.io/docs/installation/)** - Launches Linux virtual machines locally.
 - **[Helm](https://helm.sh/docs/intro/install/)** – A package manager for Kubernetes.
 
 Check out this repository and execute all commands from its root.
@@ -71,7 +70,7 @@ instance.
 ### StackPack Instances
 
 Create stackpack instances on SUSE Observability to prepare topology ingestion pipelines
-to receive data from the native, virtual and shared clusters
+to receive data from the SUSE Virtualization cluster.
 
 #### Kubernetes StackPack Instance
 
@@ -90,7 +89,7 @@ Upload the stackpack using,
 task dev:upload-autosync-stackpack-instance
 ```
 
-Next create an instance to receive data from our K3K extension.
+Next create an instance to receive data from our SUSE Virtualization extension.
 
 ```bash
 task so-create-virt-autosync-stackpack-instance
