@@ -144,7 +144,7 @@ nodes:
     events:
       showEvents: true
       relatedResourcesTemplate: (withNeighborsOf(direction = "both", components = ({COMPONENT_PREDICATE}),
-        levels = "2") ) OR ({COMPONENT_PREDICATE})
+        levels = "2") AND NOT type = "node") OR ({COMPONENT_PREDICATE})
       _type: ComponentTypeEvents
     showLogs: false
     showLastChange: true
