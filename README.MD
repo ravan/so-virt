@@ -17,6 +17,29 @@ Out of the box SUSE Observability's agent can observe **SUSE Virtualization** cl
 
 The extension reads the `VirtualMachineInstances` CRDs and converts them into `Virtual Machine` components in SUSE Observability.
 
+### SUSE Virtualization Menu
+
+![menu](./setup/img/menu.png)
+
+### Virtual Machines Overview Pages
+
+![overview](./setup/img/overview.png)
+
+### Virtual Machines Highlight Page
+
+![highlight](./setup/img/vm-highlights.png)
+
+### Virtual Machines Changes
+
+![change overview](./setup/img/change1.png)
+
+![change overview](./setup/img/change2.png)
+
+### Virtual Machines Topology
+
+![topo](./setup/img/topo.png)
+
+
 See [Setup Guide](./setup/README.MD) for a comprehensive example of setting up an environment and deploying
 the extension.
 
