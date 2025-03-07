@@ -166,17 +166,25 @@ nodes:
           levels = "1")) and type = "node"
         viewTypeIdentifier: urn:stackpack:harvester:shared:view-type:host
         _type: ComponentTypeRelatedResources
+      - resourceType: persistent-volume-claim
+        title: Volumes
+        stql: (withNeighborsOf(direction = "down", components = (id = "{COMPONENT_ID}"),
+          levels = "2")) and type = "persistent-volume-claim"
+        viewTypeIdentifier: urn:stackpack:k8s-common-v2:shared:view-type:persistent-volume-claim
+        _type: ComponentTypeRelatedResources
     metrics:
       - name: Resource usage
         description: CPU and memory usage
         bindings:
           - urn:stackpack:harvester:shared:metric-binding:vm-cpu-usage
           - urn:stackpack:harvester:shared:metric-binding:vm-memory-usage
+          - urn:stackpack:harvester:shared:metric-binding:vm-disk-total-usage
         defaultExpanded: true
         _type: ComponentTypeMetricCategory
       - name: Storage
-        description: Read and Write traffic and io
+        description: Mount usage, read/write traffic and io
         bindings:
+          - urn:stackpack:harvester:shared:metric-binding:vm-disk-usage
           - urn:stackpack:harvester:shared:metric-binding:vm-storage-read-traffic-bytes
           - urn:stackpack:harvester:shared:metric-binding:vm-storage-write-traffic-bytes
           - urn:stackpack:harvester:shared:metric-binding:vm-io-time

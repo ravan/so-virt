@@ -40,6 +40,48 @@ nodes:
   - _type: MetricBinding
     chartType: line
     enabled: true
+    id: -1011
+    identifier: urn:stackpack:harvester:shared:metric-binding:vm-disk-usage
+    layout:
+      componentSummary:
+        weight: 3
+      metricPerspective:
+        section: Virtual Machine
+        tab: Virtualization
+    name: Disk Mount Usage
+    priority: high
+    queries:
+      - alias: 'Used - ${mount_point}'
+        expression: 'kubevirt_vmi_filesystem_used_bytes{k8s_cluster_name="${tags.cluster-name}", k8s_node_name="${tags.node-name}", namespace="${tags.namespace}", name="${name}"}'
+      - alias: 'Available - ${mount_point}'
+        expression: 'kubevirt_vmi_filesystem_capacity_bytes{k8s_cluster_name="${tags.cluster-name}", k8s_node_name="${tags.node-name}", namespace="${tags.namespace}", name="${name}"}'
+    scope: type in ("vm")
+    unit: bytes
+
+  - _type: MetricBinding
+    chartType: line
+    enabled: true
+    id: -1012
+    identifier: urn:stackpack:harvester:shared:metric-binding:vm-disk-total-usage
+    layout:
+      componentSummary:
+        weight: 3
+      metricPerspective:
+        section: Virtual Machine
+        tab: Virtualization
+    name: Disk Usage
+    priority: high
+    queries:
+      - alias: 'Used'
+        expression: 'sum(kubevirt_vmi_filesystem_used_bytes{k8s_cluster_name="${tags.cluster-name}", k8s_node_name="${tags.node-name}", namespace="${tags.namespace}", name="${name}"})'
+      - alias: 'Available'
+        expression: 'sum(kubevirt_vmi_filesystem_capacity_bytes{k8s_cluster_name="${tags.cluster-name}", k8s_node_name="${tags.node-name}", namespace="${tags.namespace}", name="${name}"})'
+    scope: type in ("vm")
+    unit: bytes
+
+  - _type: MetricBinding
+    chartType: line
+    enabled: true
     id: -102
     identifier: urn:stackpack:harvester:shared:metric-binding:vm-storage-read-traffic-bytes
     layout:

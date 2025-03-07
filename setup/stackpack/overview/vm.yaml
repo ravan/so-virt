@@ -58,6 +58,10 @@ nodes:
         metricBindingIdentifier: urn:stackpack:harvester:shared:metric-binding:vm-memory-usage
         width: 160
         _type: ViewTypeTableColMetricBinding
+      - title: Disk Usage
+        metricBindingIdentifier: urn:stackpack:harvester:shared:metric-binding:vm-disk-total-usage
+        width: 160
+        _type: ViewTypeTableColMetricBinding
       - title: Namespace
         labelPrefix: namespace
         pathToIdentifier:
