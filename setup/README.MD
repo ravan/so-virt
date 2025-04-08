@@ -67,6 +67,15 @@ cd setup
 Before installing any agents in the cluster, we need to prepare the SUSE Observability
 instance.
 
+### SUSE Virtualization Server Extension
+
+We have custom menus, highlight pages, metrics, overview pages, monitors, etc.
+that we need to upload to the SUSE Observability instance.
+
+```bash
+task so-install-virt-stackpack-elements
+```
+
 ### StackPack Instances
 
 Create stackpack instances on SUSE Observability to prepare topology ingestion pipelines
@@ -95,7 +104,6 @@ Next create an instance to receive data from our SUSE Virtualization extension.
 task so-create-virt-autosync-stackpack-instance
 ```
 
-
 ## Setup Observed Clusters
 
 ### SUSE Observability Agent
@@ -116,18 +124,7 @@ Next deploy the Open Telemetry collector configured for SUSE Observability and K
 task native-deploy-otel-collector
 ```
 
-### SUSE Virtualization Extension
-
-#### Stackpack Elements
-
-We have custom menus, highlight pages, metrics, overview pages, monitors, etc.
-that we need to upload to the SUSE Observability instance.
-
-```bash
-task so-install-virt-stackpack-elements
-```
-
-#### Deploy Virtualization Extension
+### SUSE Virtualization Client Extension
 
 The virtualization extension analyses the KubeVirt `VirtualMachineInstance` CRDs and creates topology data in SUSE Observability. 
 
