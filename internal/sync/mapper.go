@@ -38,11 +38,14 @@ func mapVirtualMachine(vmi *v1.VirtualMachineInstance, f *receiver.Factory) *rec
 		c.AddProperty("memory", vmi.Spec.Domain.Memory.Guest)
 
 		netinterface, found := lo.Find(vmi.Status.Interfaces, func(item v1.VirtualMachineInstanceNetworkInterface) bool {
-			return item.Name == "default"
+			return item.Name == "default" || item.Name == "nic-0"
 		})
 		if found {
 			c.AddProperty("vmIP", netinterface.IP)
+		} else {
+			slog.Warn("no default interface found", "vm", vmi.Name, "interfaces", vmi.Status.Interfaces)
 		}
+	
 		c.AddProperty("guestInfo", vmi.Status.GuestOSInfo.PrettyName)
 		addSourceProperties(vmi, c)
 		addCommonLabels(vmi.Namespace, vmi.Status.NodeName, c, f)

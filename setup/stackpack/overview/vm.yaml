@@ -16,7 +16,7 @@ nodes:
         path:
           - properties
           - vmIP
-        width: 100
+        width: 150
         _type: ViewTypeTableColText
       - title: CPU
         path:

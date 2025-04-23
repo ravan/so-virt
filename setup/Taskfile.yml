@@ -44,7 +44,7 @@ tasks:
     cmds:
       - task: native-deploy-so-virt
       - task: native-deploy-observability-agent
-      - task: native-deploy-kubevirt-otel-collector
+      - task: native-deploy-otel-collector
 
   native-deploy-observability-agent:
     - task: dev:deploy-observability-agent
